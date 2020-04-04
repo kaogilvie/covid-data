@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${COVID_DB_USER}
+      POSTGRES_PASSWORD: ${COVID_DB_PASSWORD}
+      POSTGRES_DB: 'covid'
+    volumes:
+      - /Users/kogilvie/Documents/github/covid/postgres/data:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
