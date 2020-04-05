@@ -21,6 +21,11 @@ the homebrew server that kept restarting -- `brew services postgres stop`
 - For now, you'll need to run the DDL file corresponding to the datasource you want to look at after the initial
 Postgres setup. You can find those files in the DDL folder.
 
+### Data Sources
+- [NYTimes dataset](https://github.com/nytimes/covid-19-data)
+  - State and county level timeseries of cases and deaths since January 2020
+
+
 ### Work with the data already!
 #### Start Databases
 `docker-compose up`
