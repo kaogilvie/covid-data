@@ -9,6 +9,7 @@ import pandas as pd
 from covid_utils import logs
 from covid_utils import connect
 from covid_utils import credentials
+from load_data import local_config
 
 class NTYDataLoader(object):
     def __init__(self):
@@ -16,7 +17,7 @@ class NTYDataLoader(object):
         self.logger = logging.getLogger()
 
         self.schema = 'nytimes'
-        self.file_root = os.path.expanduser('~/Documents/github/nytimes-covid-data')
+        self.file_root = os.path.expanduser(local_config.nytimes_github_path)
 
         self.connect_to_postgres()
 
