@@ -1,5 +1,4 @@
-Docker repo to assist in rapid analysis of existing data for COVID-19
-and Kaggle NLP efforts.
+Docker repo to assist in rapid analysis and development on top of existing data for COVID-19.
 
 Runs local Postgres instance and populates [NYTimes dataset](https://github.com/nytimes/covid-19-data) into tables that
 can be easily used for analysis. There's DDL and everything.
