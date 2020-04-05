@@ -8,6 +8,8 @@ services:
       POSTGRES_USER: ${COVID_DB_USER}
       POSTGRES_PASSWORD: ${COVID_DB_PASSWORD}
       POSTGRES_DB: 'covid'
+    ports:
+      - 5432:5432
     volumes:
       - /Users/kogilvie/Documents/github/covid/postgres/data:/var/lib/postgresql/data
 
