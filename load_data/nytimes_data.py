@@ -20,6 +20,13 @@ class NTYDataLoader(object):
 
         self.connect_to_postgres()
 
+    def pull_new_data(self):
+        self.logger.info("Pulling newest data.")
+        os.chdir(self.file_root)
+        stream = os.popen('git pull')
+        self.logger.info(f'{stream.read()}')
+        self.logger.info("Newest data pulled.")
+
     def connect_to_postgres(self):
         self.logger.info("Connecting to postgres..")
         self.pg_creds = credentials.get_postgres_creds()
@@ -71,6 +78,7 @@ if __name__ == "__main__":
     }
 
     nyt = NTYDataLoader()
+    nyt.pull_new_data()
     for table, filename in tables_to_load.items():
         nyt.get_most_recent_date(table)
         nyt.load_data(table, filename)
