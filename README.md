@@ -7,11 +7,10 @@ Will be extending this to other datasets to provide a quickstart to anyone who
 wants to play around with tons of COVID-19 datasets not in a CSV format.
 
 ### LOCAL SETUP
-- Add COVID_DB_USER & COVID_DB_PASSWORD to your environment variables (highly suggest
-  putting this into your .profile / .bashrc / .bash_profile files). If you want to
-  change the postgres db name from 'covid' to something else, update the connect.py file
-  in covid_utils. If you'd like to update the postgres port, you need to update the connect.py
-  file in covid_utils in addition to the docker-compose file.
+- Add COVID_DB_USER, COVID_DB_PASSWORD, & COVID_DB_VOLUME to your environment variables
+  (highly suggest putting this into your .profile / .bashrc / .bash_profile files).
+  If you want to change the postgres db name from 'covid' to something else OR
+  update the postgres port, update the connect.py file in covid_utils & the docker-compose file.
 - If you'd like to load data, clone the necessary repos (see the "data" section),
 then check out the local_config.py file. This file contains the place where you'd
 hardcode paths for your local machine. You can be as abstract or as deliberate as you like.

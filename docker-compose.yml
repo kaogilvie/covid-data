@@ -11,7 +11,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - /Users/kogilvie/Documents/github/covid/postgres/data:/var/lib/postgresql/data
+      - ${COVID_DB_VOLUME}:/var/lib/postgresql/data
 
   adminer:
     image: adminer
