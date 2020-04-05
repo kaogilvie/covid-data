@@ -31,5 +31,6 @@ Postgres setup. You can find those files in the DDL folder.
 `docker-compose up`
 
 #### Load data
-`cd /path/to/covid/repo
-python load_data/{source}_data.py`
+`cd /path/to/covid/repo`
+
+`python load_data/{source}_data.py`
