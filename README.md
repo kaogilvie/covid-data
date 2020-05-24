@@ -23,13 +23,36 @@ Postgres setup. You can find those files in the DDL folder.
 ### Data Sources
 - [NYTimes dataset](https://github.com/nytimes/covid-19-data)
   - State and county level timeseries of cases and deaths since January 2020
-
+- Static Data
+  - [FIPS to LatLng](https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2019_Gazetteer/2019_Gaz_counties_national.zip)
+    - Translation of FIPS datapoints (referred to in US Census Terms also as "GEOID") to center of county; uses Gazetteer files from Census Bureau
 
 ### Work with the data already!
 #### Start Databases
 `docker-compose up`
 
-#### Load data
+#### Update entire dataset
+Can run for entire dataset or just a single source.
+`cd /path/to/covid/repo`
+
+`python update/{datasource}.py`
+OR
+`python update/all.py`
+
+#### Load/update dynamic data tables
+Load data that is updated in a regular manner.
 `cd /path/to/covid/repo`
 
 `python load_data/{source}_data.py`
+
+#### Load static data tables
+Load static data (i.e. from a CSV). Put static CSVs in "static" directory.
+`cd /path/to/covid/repo`
+
+`python load_data/load_csv.py -l 'static/{filename}'`
+
+#### Update MVS manually
+This step is taken care of in the "dataset refresh" scripts, but can run independently if needed.
+`cd /path/to/covid/repo`
+
+`python mvs/mvs_maker.py -s '{filename}.sql'`
