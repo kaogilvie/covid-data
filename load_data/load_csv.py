@@ -1,6 +1,7 @@
 import csv
 import os
 import logging
+import argparse
 
 import psycopg2
 from psycopg2.extras import DictCursor
@@ -53,7 +54,13 @@ class StaticCSVLoader(object):
 
 if __name__ == "__main__":
 
-    load_file = 'static/fips_to_latlng.csv'
+    args = argparse.ArgumentParser()
+    args.add_argument('-l', '--load_file', help="relative filename of file to load")
+    argz = args.parse_args()
+
+    load_file = argz.load_file
+    if load_file is None:
+        load_file = 'static/fips_to_latlng.csv'
 
     reader = StaticCSVLoader(local=False)
 
