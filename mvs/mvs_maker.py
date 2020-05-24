@@ -11,7 +11,7 @@ from load_data import local_config
 
 class SQLizer(object):
     def __init__(self, local=True):
-        logs.configure_logging('NTYDataLoader')
+        logs.configure_logging('SQLzier')
         self.logger = logging.getLogger()
 
         self.file_root = os.path.expanduser(local_config.path_to_this_repo)
@@ -26,7 +26,7 @@ class SQLizer(object):
         self.logger.info("Connected to postgres at {}.".format(self.pg_creds['host']))
 
     def run_sql_file(self, filepath):
-        self.full_filepath = f'{self.file_root}/mvs/{sql_file}'
+        self.full_filepath = f'{self.file_root}/mvs/{filepath}'
         self.sql_statements = open(self.full_filepath, 'r').read()
 
         self.logger.info(f"Running the following statement:\n{self.sql_statements}")
