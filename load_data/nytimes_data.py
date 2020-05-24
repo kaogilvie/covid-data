@@ -1,6 +1,7 @@
 import csv
 import os
 import logging
+import argparse
 
 import psycopg2
 from psycopg2.extras import DictCursor
@@ -112,14 +113,23 @@ class NTYDataLoader(object):
 
 if __name__ == "__main__":
 
+    # deal with numpy interpolation
     register_adapter(numpy.int64, addapt_numpy_int64)
-    tables_to_load = {
-        'cases_by_county': 'us-counties.csv',
-        'cases_by_state': 'us-states.csv'
-    }
+
+    args = argparse.ArgumentParser()
+    args.add_argument('-t', '--table', help='table to refresh')
+    args.add_argument('-f', '--filename', help='path to filename')
+    argz = args.parse_args()
+
+    table = argz.table
+    filename = args.filename
+    local = False
+    if table is None:
+        local = True
+        table = f'cases_by_county'
+        filename = f'us-counties.csv'
 
     nyt = NTYDataLoader(False)
     nyt.pull_new_data()
-    for table, filename in tables_to_load.items():
-        table_exists = nyt.check_table_exists(table)
-        nyt.load_data(table, filename, exists=table_exists)
+    table_exists = nyt.check_table_exists(table)
+    nyt.load_data(table, filename, exists=table_exists)
