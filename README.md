@@ -6,7 +6,7 @@ can be easily used for analysis. There's DDL and everything.
 Will be extending this to other datasets to provide a quickstart to anyone who
 wants to play around with tons of COVID-19 datasets not in a CSV format.
 
-Development plan and notes (here)[https://docs.google.com/document/d/1sQNuf-2Iud6JJ5V0mbTWqXwwA1A3QOzsqRQ-5GXXMDk/edit?usp=sharing].
+Development plan and notes [here](https://docs.google.com/document/d/1sQNuf-2Iud6JJ5V0mbTWqXwwA1A3QOzsqRQ-5GXXMDk/edit?usp=sharing).
 
 ### LOCAL SETUP
 - Add COVID_DB_USER, COVID_DB_PASSWORD, & COVID_DB_VOLUME to your environment variables
