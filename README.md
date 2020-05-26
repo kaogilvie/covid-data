@@ -33,26 +33,26 @@ Postgres setup. You can find those files in the DDL folder.
 
 #### Update entire dataset
 Can run for entire dataset or just a single source.
-`cd /path/to/covid/repo`
 
+`cd /path/to/covid/repo`
 `python update/{datasource}.py`
 OR
 `python update/all.py`
 
 #### Load/update dynamic data tables
 Load data that is updated in a regular manner.
-`cd /path/to/covid/repo`
 
+`cd /path/to/covid/repo`
 `python load_data/{source}_data.py`
 
 #### Load static data tables
 Load static data (i.e. from a CSV). Put static CSVs in "static" directory.
-`cd /path/to/covid/repo`
 
+`cd /path/to/covid/repo`
 `python load_data/load_csv.py -l 'static/{filename}'`
 
 #### Update MVS manually
 This step is taken care of in the "dataset refresh" scripts, but can run independently if needed.
-`cd /path/to/covid/repo`
 
+`cd /path/to/covid/repo`
 `python mvs/mvs_maker.py -s '{filename}.sql'`
