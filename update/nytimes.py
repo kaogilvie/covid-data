@@ -6,8 +6,8 @@ import logging
 
 # NYTIMES CONFIG
 dynamic_tables = {
-    'cases_by_county': 'us-counties.csv',
-    'cases_by_state': 'us-states.csv'
+    'total_cases_by_county': 'us-counties.csv',
+    'total_cases_by_state': 'us-states.csv'
 }
 
 mvs_files = [
