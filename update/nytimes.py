@@ -14,7 +14,7 @@ mvs_files = [
     'nyt_county_geo.sql'
 ]
 
-LOCAL = False
+LOCAL = True
 
 if __name__ == "__main__":
 
