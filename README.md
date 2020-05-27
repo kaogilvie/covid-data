@@ -1,7 +1,6 @@
-Docker repo to assist in rapid analysis and development on top of existing data for COVID-19.
+Repo to assist in rapid analysis and development on top of existing data for COVID-19.
 
-Runs local Postgres instance and populates [NYTimes dataset](https://github.com/nytimes/covid-19-data) into tables that
-can be easily used for analysis. There's DDL and everything.
+Docker image runs local Postgres instance and populates [NYTimes dataset](https://github.com/nytimes/covid-19-data) into tables that can be easily used for analysis. There's DDL and everything.
 
 Will be extending this to other datasets to provide a quickstart to anyone who
 wants to play around with tons of COVID-19 datasets not in a CSV format.
