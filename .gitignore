@@ -5,3 +5,4 @@ __pycache__
 postgres/*
 
 !static/*
+!d3/output/*
