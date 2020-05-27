@@ -57,8 +57,8 @@ if __name__ == "__main__":
     sql = args.sql
     output = args.output
     if sql is None:
-        sql = 'total_deaths_by_state'
-        output = 'total_deaths_by_state.csv'
+        sql = 'daily_by_state'
+        output = 'daily_by_state.csv'
 
     ff = FlatFileGenerator(sql, LOCAL)
     ff.fetch_data()

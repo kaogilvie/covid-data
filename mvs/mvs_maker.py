@@ -41,7 +41,7 @@ if __name__ == "__main__":
     argz = args.parse_args()
 
     sql_file = argz.sql_file
-    local = False
+    local = True
     if sql_file is None:
         local = True
         sql_file = f'nyt_county_geo.sql'
