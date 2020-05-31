@@ -72,7 +72,7 @@ if __name__ == "__main__":
     file_path_list = []
     for dirpath, subdirs, files in os.walk(repo_path):
         continued = False
-        for exclusion in exclusions:
+        for exclusion in folder_exclusions:
             if dirpath.find(exclusion) != -1:
                 continued = True
         if continued is True:
