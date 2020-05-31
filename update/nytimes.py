@@ -4,6 +4,10 @@ from covid_utils import logs
 from d3 import generate_flatfile as ff
 
 import logging
+from datetime import datetime
+import os
+
+from git import Repo
 
 # NYTIMES CONFIG
 dynamic_tables = {
@@ -19,6 +23,18 @@ flat_files = [
     'totals_by_state',
     'daily_by_state'
 ]
+
+folder_exclusions = [
+    '.git',
+    'postgres',
+    '__pycache__'
+]
+
+file_exclusions = [
+    '.DS_Store'
+]
+
+repo_path = '/Users/kogilvie/Documents/github/local-covid-data/'
 
 LOCAL = True
 
@@ -52,35 +68,28 @@ if __name__ == "__main__":
         flatFiler.fetch_data(sql)
         flatFiler.write_csv()
 
-from git import Repo
-import os
-
-repo_path = '/Users/kogilvie/Documents/github/local-covid-data/'
-
-folder_exclusions = [
-    '.git',
-    'postgres',
-    '__pycache__'
-]
-file_exclusions = [
-    '.DS_Store'
-]
-
-file_path_list = []
-for dirpath, subdirs, files in os.walk(repo_path):
-    continued = False
-    for exclusion in exclusions:
-        if dirpath.find(exclusion) != -1:
-            continued = True
-    if continued is True:
-        continue
-    for x in files:
-        if x in file_exclusions:
+    logger.info("Getting all tracked files.")
+    file_path_list = []
+    for dirpath, subdirs, files in os.walk(repo_path):
+        continued = False
+        for exclusion in exclusions:
+            if dirpath.find(exclusion) != -1:
+                continued = True
+        if continued is True:
             continue
-        file_path_list.append(os.path.join(dirpath, x))
+        for x in files:
+            if x in file_exclusions:
+                continue
+            file_path_list.append(os.path.join(dirpath, x))
 
+    logger.info("Adding files to index.")
+    covid_repo = Repo(repo_path)
+    for file in file_path_list:
+        covid_repo.index.add(file)
 
+    logger.info("Committing files.")
+    covid_repo.index.commit(f"Data update {datetime.now()}")
 
-covid_repo = Repo('/Users/kogilvie/Documents/github/local-covid-data/')
-for file in filepath_list:
-    covid_repo.index.add(file)
+    logger.info("Pushing updates to remote.")
+    covid_origin = covid_repo.remotes.origin
+    covid_origin.push()
