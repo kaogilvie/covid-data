@@ -51,3 +51,36 @@ if __name__ == "__main__":
     for sql in flat_files:
         flatFiler.fetch_data(sql)
         flatFiler.write_csv()
+
+from git import Repo
+import os
+
+repo_path = '/Users/kogilvie/Documents/github/local-covid-data/'
+
+folder_exclusions = [
+    '.git',
+    'postgres',
+    '__pycache__'
+]
+file_exclusions = [
+    '.DS_Store'
+]
+
+file_path_list = []
+for dirpath, subdirs, files in os.walk(repo_path):
+    continued = False
+    for exclusion in exclusions:
+        if dirpath.find(exclusion) != -1:
+            continued = True
+    if continued is True:
+        continue
+    for x in files:
+        if x in file_exclusions:
+            continue
+        file_path_list.append(os.path.join(dirpath, x))
+
+
+
+covid_repo = Repo('/Users/kogilvie/Documents/github/local-covid-data/')
+for file in filepath_list:
+    covid_repo.index.add(file)
