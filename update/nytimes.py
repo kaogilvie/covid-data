@@ -1,6 +1,7 @@
 from load_data import nytimes_data as times
 from mvs import mvs_maker as mv
 from covid_utils import logs
+from d3 import generate_flatfile as ff
 
 import logging
 
@@ -12,6 +13,11 @@ dynamic_tables = {
 
 mvs_files = [
     'nyt_county_geo.sql'
+]
+
+flat_files = [
+    'totals_by_state',
+    'daily_by_state'
 ]
 
 LOCAL = True
@@ -38,3 +44,10 @@ if __name__ == "__main__":
     for file in mvs_files:
         logger.info(f"Working on {file}")
         sqler.run_sql_file(file)
+
+    logger.info("Refreshing all NYTimes based flat files.")
+
+    flatFiler = ff.FlatFileGenerator(LOCAL)
+    for sql in flat_files:
+        flatFiler.fetch_data(sql)
+        flatFiler.write_csv()

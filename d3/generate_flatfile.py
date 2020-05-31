@@ -13,13 +13,12 @@ from d3 import queries
 LOCAL = True
 
 class FlatFileGenerator(object):
-    def __init__(self, sql, local=True):
+    def __init__(self, local=True):
         logs.configure_logging('FFGenerator')
         self.logger = logging.getLogger()
 
         self.file_root = os.path.expanduser(local_config.path_to_this_repo)
 
-        self.sql_key = sql
         self.sql_dict = queries.sql_dict
 
         self.connect_to_postgres(local)
@@ -30,18 +29,19 @@ class FlatFileGenerator(object):
         self.conn = connect.pandas_dbconn(self.pg_creds)
         self.logger.info("Connected to postgres at {}.".format(self.pg_creds['host']))
 
-    def fetch_data(self):
+    def fetch_data(self, sql):
+        self.sql_key = sql
         self.logger.info(f"Running {self.sql_key} query...")
         self.sql_to_run = queries.sql_dict[self.sql_key]
 
         self.logger.info(f"Using this sql: {self.sql_to_run}")
         self.df = pd.read_sql(self.sql_to_run, self.conn)
 
-    def write_csv(self, output):
+    def write_csv(self):
         self.logger.info("Forming filename.")
-        self.full_output_path = f"{self.file_root}/d3/output/{output}"
+        self.full_output_path = f"{self.file_root}/d3/output/{self.sql_key}.csv"
 
-        self.logger.info(f"Writing to {self.full_output_path}")
+        self.logger.info(f"Writing to {self.sql_key}.csv")
         self.df.to_csv(self.full_output_path, index=False)
 
         self.logger.info("Done writing file.")
@@ -59,6 +59,6 @@ if __name__ == "__main__":
         sql = 'daily_by_state'
         output = 'daily_by_state.csv'
 
-    ff = FlatFileGenerator(sql, LOCAL)
-    ff.fetch_data()
-    ff.write_csv(output)
+    ff = FlatFileGenerator(LOCAL)
+    ff.fetch_data(sql)
+    ff.write_csv()
