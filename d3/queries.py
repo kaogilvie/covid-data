@@ -17,3 +17,5 @@ sql_dict = {
                         FROM nytimes.daily_by_state
                        """
 }
+
+### NEED TO ADD THESE TO THE FULL FLOW
