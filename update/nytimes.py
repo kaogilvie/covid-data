@@ -52,9 +52,7 @@ if __name__ == "__main__":
         table_exists = nyt.check_table_exists(table)
         nyt.load_data(table, filename, exists=table_exists)
 
-    # refresh all NYTimes MVS
     logger.info("Refreshing all NYTimes based MVs.")
-
     sqler = mv.SQLizer(LOCAL)
 
     for file in mvs_files:

@@ -36,6 +36,7 @@ class FlatFileGenerator(object):
 
         self.logger.info(f"Using this sql: {self.sql_to_run}")
         self.df = pd.read_sql(self.sql_to_run, self.conn)
+        self.df = self.df.fillna(0)
 
     def write_csv(self):
         self.logger.info("Forming filename.")
