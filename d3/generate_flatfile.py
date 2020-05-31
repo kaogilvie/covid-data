@@ -6,7 +6,7 @@ import pandas as pd
 from covid_utils import logs
 from covid_utils import connect
 from covid_utils import credentials
-from load_data import local_config
+from covid_utils import local_config
 
 from d3 import queries
 
@@ -42,7 +42,7 @@ class FlatFileGenerator(object):
         self.logger.info("Forming filename.")
         self.full_output_path = f"{self.data_file_root}/{self.sql_key}.csv"
 
-        self.logger.info(f"Writing to {self.sql_key}.csv")
+        self.logger.info(f"Writing to {self.full_output_path}")
         self.df.to_csv(self.full_output_path, index=False)
 
         self.logger.info("Done writing file.")

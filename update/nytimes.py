@@ -1,6 +1,7 @@
 from load_data import nytimes_data as times
 from mvs import mvs_maker as mv
 from covid_utils import logs
+from covid_utils import local_config
 from d3 import generate_flatfile as ff
 
 import logging
@@ -25,17 +26,9 @@ flat_files = [
     'daily_by_state'
 ]
 
-folder_exclusions = [
-    '.git',
-    'postgres',
-    '__pycache__'
-]
-
 file_exclusions = [
     '.DS_Store'
 ]
-
-data_repo_path = '/Users/kogilvie/Documents/github/kaogilvie.github.io/'
 
 LOCAL = True
 
@@ -70,20 +63,14 @@ if __name__ == "__main__":
 
     logger.info("Getting all tracked files.")
     file_path_list = []
-    for dirpath, subdirs, files in os.walk(data_repo_path):
-        continued = False
-        for exclusion in folder_exclusions:
-            if dirpath.find(exclusion) != -1:
-                continued = True
-        if continued is True:
-            continue
+    for dirpath, subdirs, files in os.walk(f'{local_config.data_repo_path}/data'):
         for x in files:
             if x in file_exclusions:
                 continue
             file_path_list.append(os.path.join(dirpath, x))
 
     logger.info("Adding files to index.")
-    github_io_repo = Repo(data_repo_path)
+    github_io_repo = Repo(local_config.data_repo_path)
     for file in file_path_list:
         github_io_repo.index.add(file)
 

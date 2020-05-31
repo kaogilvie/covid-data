@@ -7,7 +7,7 @@ from psycopg2.extras import DictCursor
 from covid_utils import logs
 from covid_utils import connect
 from covid_utils import credentials
-from load_data import local_config
+from covid_utils import local_config
 
 from mvs import mvs_config
 from mvs import mvs_aux

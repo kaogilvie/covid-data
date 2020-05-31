@@ -13,7 +13,7 @@ import numpy
 from covid_utils import logs
 from covid_utils import connect
 from covid_utils import credentials
-from load_data import local_config
+from covid_utils import local_config
 
 def addapt_numpy_int64(numpy_int64):
     return(AsIs(numpy_int64))

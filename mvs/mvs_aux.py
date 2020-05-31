@@ -1,7 +1,7 @@
 from covid_utils import logs
 from covid_utils import connect
 from covid_utils import credentials
-from load_data import local_config
+from covid_utils import local_config
 from mvs import mvs_config
 
 import logging
@@ -73,10 +73,3 @@ class MVSAuxTransformer(object):
 
         self.logger.info("Upserting data into the MV.")
         to_insert.to_sql(f"{mvs_config.config[self.mv_name]['output_table']}", self.pd_cxn, schema=f"{mvs_config.config[self.mv_name]['output_schema']}", if_exists='append', index=False, method='multi')
-
-
-# mv_name_test = 'nyt_daily_by_state'
-#
-# mv = MVSAuxTransformer(mv_name_test)
-# self.fetch_data()
-# self.execute_transformations()
