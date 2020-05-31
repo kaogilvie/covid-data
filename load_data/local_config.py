@@ -1,6 +1,9 @@
 ## Local path to NYTimes data repositor. '~'s are acceptable.
 nytimes_github_path = '~/Documents/github/nytimes-covid-data'
 
+## path to DATA repo -- this is used to fuel Observable Maps
+data_repo_path = '~/Documents/github/kaogilvie.github.io'
+
 ## In order to import the covid_utils libraries correctly, you must
 ## add the covid repo to your PYTHONPATH. (You can also do this in your
 ## .bashrc, .bash_profile, or .profile if you'd like). This block will

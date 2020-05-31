@@ -17,7 +17,7 @@ class FlatFileGenerator(object):
         logs.configure_logging('FFGenerator')
         self.logger = logging.getLogger()
 
-        self.file_root = os.path.expanduser(local_config.path_to_this_repo)
+        self.data_file_root = os.path.expanduser(local_config.data_repo_path)
 
         self.sql_dict = queries.sql_dict
 
@@ -40,7 +40,7 @@ class FlatFileGenerator(object):
 
     def write_csv(self):
         self.logger.info("Forming filename.")
-        self.full_output_path = f"{self.file_root}/d3/output/{self.sql_key}.csv"
+        self.full_output_path = f"{self.data_file_root}/{self.sql_key}.csv"
 
         self.logger.info(f"Writing to {self.sql_key}.csv")
         self.df.to_csv(self.full_output_path, index=False)

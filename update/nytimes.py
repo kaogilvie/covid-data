@@ -35,7 +35,7 @@ file_exclusions = [
     '.DS_Store'
 ]
 
-repo_path = '/Users/kogilvie/Documents/github/local-covid-data/'
+data_repo_path = '/Users/kogilvie/Documents/github/kaogilvie.github.io/'
 
 LOCAL = True
 
@@ -70,7 +70,7 @@ if __name__ == "__main__":
 
     logger.info("Getting all tracked files.")
     file_path_list = []
-    for dirpath, subdirs, files in os.walk(repo_path):
+    for dirpath, subdirs, files in os.walk(data_repo_path):
         continued = False
         for exclusion in folder_exclusions:
             if dirpath.find(exclusion) != -1:
@@ -83,13 +83,13 @@ if __name__ == "__main__":
             file_path_list.append(os.path.join(dirpath, x))
 
     logger.info("Adding files to index.")
-    covid_repo = Repo(repo_path)
+    github_io_repo = Repo(data_repo_path)
     for file in file_path_list:
-        covid_repo.index.add(file)
+        github_io_repo.index.add(file)
 
     logger.info("Committing files.")
-    covid_repo.index.commit(f"Data update {datetime.now()}")
+    github_io_repo.index.commit(f"Data update {datetime.now()}")
 
     logger.info("Pushing updates to remote.")
-    covid_origin = covid_repo.remotes.origin
-    covid_origin.push()
+    github_io_origin = github_io_repo.remotes.origin
+    github_io_origin.push()
