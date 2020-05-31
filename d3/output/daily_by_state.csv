@@ -77,6 +77,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Alabama,3.0,382.0
 2020-05-28,Alabama,8.0,498.0
 2020-05-29,Alabama,19.0,501.0
+2020-05-30,Alabama,8.0,328.0
 2020-03-12,Alaska,0.0,0.0
 2020-03-13,Alaska,0.0,0.0
 2020-03-14,Alaska,0.0,0.0
@@ -156,6 +157,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Alaska,0.0,1.0
 2020-05-28,Alaska,0.0,13.0
 2020-05-29,Alaska,0.0,6.0
+2020-05-30,Alaska,0.0,5.0
 2020-01-26,Arizona,0.0,0.0
 2020-01-27,Arizona,0.0,0.0
 2020-01-28,Arizona,0.0,0.0
@@ -281,6 +283,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Arizona,24.0,479.0
 2020-05-28,Arizona,26.0,501.0
 2020-05-29,Arizona,28.0,702.0
+2020-05-30,Arizona,18.0,790.0
 2020-03-11,Arkansas,0.0,0.0
 2020-03-12,Arkansas,0.0,5.0
 2020-03-13,Arkansas,0.0,1.0
@@ -361,6 +364,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Arkansas,1.0,97.0
 2020-05-28,Arkansas,5.0,261.0
 2020-05-29,Arkansas,7.0,239.0
+2020-05-30,Arkansas,1.0,236.0
 2020-01-25,California,0.0,0.0
 2020-01-26,California,0.0,1.0
 2020-01-27,California,0.0,0.0
@@ -487,6 +491,7 @@ date,state,new_deaths,new_cases
 2020-05-27,California,102.0,1949.0
 2020-05-28,California,81.0,2197.0
 2020-05-29,California,102.0,2972.0
+2020-05-30,California,70.0,3057.0
 2020-03-05,Colorado,0.0,0.0
 2020-03-06,Colorado,0.0,6.0
 2020-03-07,Colorado,0.0,0.0
@@ -573,6 +578,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Colorado,41.0,222.0
 2020-05-28,Colorado,29.0,341.0
 2020-05-29,Colorado,15.0,486.0
+2020-05-30,Colorado,6.0,482.0
 2020-03-08,Connecticut,0.0,0.0
 2020-03-09,Connecticut,0.0,1.0
 2020-03-10,Connecticut,0.0,0.0
@@ -656,6 +662,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Connecticut,34.0,-15.0
 2020-05-28,Connecticut,23.0,271.0
 2020-05-29,Connecticut,42.0,203.0
+2020-05-30,Connecticut,44.0,260.0
 2020-03-11,Delaware,0.0,0.0
 2020-03-12,Delaware,0.0,3.0
 2020-03-13,Delaware,0.0,0.0
@@ -736,6 +743,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Delaware,9.0,30.0
 2020-05-28,Delaware,1.0,75.0
 2020-05-29,Delaware,11.0,65.0
+2020-05-30,Delaware,5.0,186.0
 2020-03-07,District of Columbia,0.0,0.0
 2020-03-08,District of Columbia,0.0,0.0
 2020-03-09,District of Columbia,0.0,3.0
@@ -820,6 +828,7 @@ date,state,new_deaths,new_cases
 2020-05-27,District of Columbia,5.0,72.0
 2020-05-28,District of Columbia,8.0,86.0
 2020-05-29,District of Columbia,7.0,46.0
+2020-05-30,District of Columbia,2.0,179.0
 2020-03-01,Florida,0.0,0.0
 2020-03-02,Florida,0.0,0.0
 2020-03-03,Florida,0.0,1.0
@@ -910,6 +919,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Florida,60.0,379.0
 2020-05-28,Florida,45.0,651.0
 2020-05-29,Florida,49.0,1212.0
+2020-05-30,Florida,34.0,927.0
 2020-03-02,Georgia,0.0,0.0
 2020-03-03,Georgia,0.0,0.0
 2020-03-04,Georgia,0.0,0.0
@@ -999,6 +1009,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Georgia,37.0,647.0
 2020-05-28,Georgia,38.0,650.0
 2020-05-29,Georgia,11.0,525.0
+2020-05-30,Georgia,20.0,448.0
 2020-03-15,Guam,0.0,0.0
 2020-03-16,Guam,0.0,0.0
 2020-03-17,Guam,0.0,0.0
@@ -1075,6 +1086,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Guam,0.0,1.0
 2020-05-28,Guam,0.0,1.0
 2020-05-29,Guam,0.0,0.0
+2020-05-30,Guam,0.0,0.0
 2020-03-06,Hawaii,0.0,0.0
 2020-03-07,Hawaii,0.0,0.0
 2020-03-08,Hawaii,0.0,1.0
@@ -1160,6 +1172,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Hawaii,0.0,1.0
 2020-05-28,Hawaii,0.0,3.0
 2020-05-29,Hawaii,0.0,2.0
+2020-05-30,Hawaii,0.0,2.0
 2020-03-13,Idaho,0.0,0.0
 2020-03-14,Idaho,0.0,4.0
 2020-03-15,Idaho,0.0,0.0
@@ -1238,6 +1251,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Idaho,1.0,32.0
 2020-05-28,Idaho,0.0,39.0
 2020-05-29,Idaho,0.0,34.0
+2020-05-30,Idaho,0.0,36.0
 2020-01-24,Illinois,0.0,0.0
 2020-01-25,Illinois,0.0,0.0
 2020-01-26,Illinois,0.0,0.0
@@ -1365,6 +1379,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Illinois,158.0,1126.0
 2020-05-28,Illinois,107.0,1516.0
 2020-05-29,Illinois,83.0,1666.0
+2020-05-30,Illinois,60.0,1496.0
 2020-03-06,Indiana,0.0,0.0
 2020-03-07,Indiana,0.0,0.0
 2020-03-08,Indiana,0.0,1.0
@@ -1450,6 +1465,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Indiana,26.0,386.0
 2020-05-28,Indiana,38.0,643.0
 2020-05-29,Indiana,42.0,514.0
+2020-05-30,Indiana,15.0,665.0
 2020-03-08,Iowa,0.0,0.0
 2020-03-09,Iowa,0.0,5.0
 2020-03-10,Iowa,0.0,5.0
@@ -1533,6 +1549,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Iowa,16.0,447.0
 2020-05-28,Iowa,14.0,226.0
 2020-05-29,Iowa,15.0,347.0
+2020-05-30,Iowa,6.0,317.0
 2020-03-07,Kansas,0.0,0.0
 2020-03-08,Kansas,0.0,0.0
 2020-03-09,Kansas,0.0,0.0
@@ -1617,6 +1634,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Kansas,3.0,101.0
 2020-05-28,Kansas,2.0,59.0
 2020-05-29,Kansas,0.0,314.0
+2020-05-30,Kansas,0.0,21.0
 2020-03-06,Kentucky,0.0,0.0
 2020-03-07,Kentucky,0.0,0.0
 2020-03-08,Kentucky,0.0,3.0
@@ -1702,6 +1720,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Kentucky,13.0,138.0
 2020-05-28,Kentucky,4.0,197.0
 2020-05-29,Kentucky,10.0,178.0
+2020-05-30,Kentucky,7.0,199.0
 2020-03-09,Louisiana,0.0,0.0
 2020-03-10,Louisiana,0.0,5.0
 2020-03-11,Louisiana,0.0,7.0
@@ -1784,6 +1803,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Louisiana,21.0,442.0
 2020-05-28,Louisiana,18.0,213.0
 2020-05-29,Louisiana,26.0,0.0
+2020-05-30,Louisiana,19.0,775.0
 2020-03-12,Maine,0.0,0.0
 2020-03-13,Maine,0.0,1.0
 2020-03-14,Maine,0.0,1.0
@@ -1863,6 +1883,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Maine,2.0,28.0
 2020-05-28,Maine,3.0,52.0
 2020-05-29,Maine,1.0,37.0
+2020-05-30,Maine,4.0,56.0
 2020-03-05,Maryland,0.0,0.0
 2020-03-06,Maryland,0.0,0.0
 2020-03-07,Maryland,0.0,0.0
@@ -1949,6 +1970,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Maryland,59.0,752.0
 2020-05-28,Maryland,36.0,1292.0
 2020-05-29,Maryland,38.0,1297.0
+2020-05-30,Maryland,43.0,1031.0
 2020-02-01,Massachusetts,0.0,0.0
 2020-02-02,Massachusetts,0.0,0.0
 2020-02-03,Massachusetts,0.0,0.0
@@ -2068,6 +2090,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Massachusetts,74.0,527.0
 2020-05-28,Massachusetts,93.0,675.0
 2020-05-29,Massachusetts,78.0,617.0
+2020-05-30,Massachusetts,50.0,789.0
 2020-03-10,Michigan,0.0,0.0
 2020-03-11,Michigan,0.0,0.0
 2020-03-12,Michigan,0.0,10.0
@@ -2149,6 +2172,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Michigan,68.0,504.0
 2020-05-28,Michigan,38.0,400.0
 2020-05-29,Michigan,34.0,645.0
+2020-05-30,Michigan,57.0,259.0
 2020-03-06,Minnesota,0.0,0.0
 2020-03-07,Minnesota,0.0,0.0
 2020-03-08,Minnesota,0.0,1.0
@@ -2234,6 +2258,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Minnesota,34.0,505.0
 2020-05-28,Minnesota,35.0,483.0
 2020-05-29,Minnesota,29.0,584.0
+2020-05-30,Minnesota,30.0,659.0
 2020-03-11,Mississippi,0.0,0.0
 2020-03-12,Mississippi,0.0,0.0
 2020-03-13,Mississippi,0.0,5.0
@@ -2314,6 +2339,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Mississippi,18.0,313.0
 2020-05-28,Mississippi,23.0,328.0
 2020-05-29,Mississippi,17.0,418.0
+2020-05-30,Mississippi,13.0,439.0
 2020-03-07,Missouri,0.0,0.0
 2020-03-08,Missouri,0.0,0.0
 2020-03-09,Missouri,0.0,0.0
@@ -2398,6 +2424,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Missouri,7.0,187.0
 2020-05-28,Missouri,10.0,191.0
 2020-05-29,Missouri,25.0,134.0
+2020-05-30,Missouri,42.0,169.0
 2020-03-13,Montana,0.0,0.0
 2020-03-14,Montana,0.0,2.0
 2020-03-15,Montana,0.0,0.0
@@ -2476,6 +2503,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Montana,0.0,2.0
 2020-05-28,Montana,0.0,4.0
 2020-05-29,Montana,0.0,8.0
+2020-05-30,Montana,0.0,12.0
 2020-02-17,Nebraska,0.0,0.0
 2020-02-18,Nebraska,0.0,0.0
 2020-02-19,Nebraska,0.0,0.0
@@ -2579,6 +2607,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Nebraska,8.0,357.0
 2020-05-28,Nebraska,2.0,285.0
 2020-05-29,Nebraska,7.0,393.0
+2020-05-30,Nebraska,0.0,251.0
 2020-03-05,Nevada,0.0,0.0
 2020-03-06,Nevada,0.0,0.0
 2020-03-07,Nevada,0.0,0.0
@@ -2665,6 +2694,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Nevada,6.0,91.0
 2020-05-28,Nevada,8.0,97.0
 2020-05-29,Nevada,5.0,128.0
+2020-05-30,Nevada,2.0,144.0
 2020-03-02,New Hampshire,0.0,0.0
 2020-03-03,New Hampshire,0.0,1.0
 2020-03-04,New Hampshire,0.0,0.0
@@ -2754,6 +2784,7 @@ date,state,new_deaths,new_cases
 2020-05-27,New Hampshire,9.0,55.0
 2020-05-28,New Hampshire,9.0,103.0
 2020-05-29,New Hampshire,6.0,103.0
+2020-05-30,New Hampshire,4.0,53.0
 2020-03-04,New Jersey,0.0,0.0
 2020-03-05,New Jersey,0.0,1.0
 2020-03-06,New Jersey,0.0,2.0
@@ -2841,6 +2872,7 @@ date,state,new_deaths,new_cases
 2020-05-27,New Jersey,148.0,864.0
 2020-05-28,New Jersey,62.0,1187.0
 2020-05-29,New Jersey,130.0,1029.0
+2020-05-30,New Jersey,103.0,764.0
 2020-03-11,New Mexico,0.0,0.0
 2020-03-12,New Mexico,0.0,2.0
 2020-03-13,New Mexico,0.0,4.0
@@ -2921,6 +2953,7 @@ date,state,new_deaths,new_cases
 2020-05-27,New Mexico,4.0,122.0
 2020-05-28,New Mexico,6.0,112.0
 2020-05-29,New Mexico,9.0,129.0
+2020-05-30,New Mexico,7.0,131.0
 2020-03-01,New York,0.0,0.0
 2020-03-02,New York,0.0,0.0
 2020-03-03,New York,0.0,1.0
@@ -3011,6 +3044,7 @@ date,state,new_deaths,new_cases
 2020-05-27,New York,98.0,1132.0
 2020-05-28,New York,99.0,1758.0
 2020-05-29,New York,97.0,1549.0
+2020-05-30,New York,77.0,1363.0
 2020-03-03,North Carolina,0.0,0.0
 2020-03-04,North Carolina,0.0,0.0
 2020-03-05,North Carolina,0.0,0.0
@@ -3099,6 +3133,7 @@ date,state,new_deaths,new_cases
 2020-05-27,North Carolina,38.0,599.0
 2020-05-28,North Carolina,32.0,829.0
 2020-05-29,North Carolina,29.0,1119.0
+2020-05-30,North Carolina,15.0,1026.0
 2020-03-11,North Dakota,0.0,0.0
 2020-03-12,North Dakota,0.0,0.0
 2020-03-13,North Dakota,0.0,0.0
@@ -3179,6 +3214,7 @@ date,state,new_deaths,new_cases
 2020-05-27,North Dakota,5.0,20.0
 2020-05-28,North Dakota,1.0,42.0
 2020-05-29,North Dakota,2.0,39.0
+2020-05-30,North Dakota,1.0,34.0
 2020-03-28,Northern Mariana Islands,0.0,0.0
 2020-03-29,Northern Mariana Islands,0.0,0.0
 2020-03-30,Northern Mariana Islands,0.0,0.0
@@ -3242,6 +3278,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Northern Mariana Islands,0.0,0.0
 2020-05-28,Northern Mariana Islands,0.0,0.0
 2020-05-29,Northern Mariana Islands,0.0,0.0
+2020-05-30,Northern Mariana Islands,0.0,0.0
 2020-03-09,Ohio,0.0,0.0
 2020-03-10,Ohio,0.0,0.0
 2020-03-11,Ohio,0.0,1.0
@@ -3324,6 +3361,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Ohio,42.0,433.0
 2020-05-28,Ohio,54.0,476.0
 2020-05-29,Ohio,33.0,651.0
+2020-05-30,Ohio,18.0,468.0
 2020-03-06,Oklahoma,0.0,0.0
 2020-03-07,Oklahoma,0.0,0.0
 2020-03-08,Oklahoma,0.0,0.0
@@ -3409,6 +3447,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Oklahoma,4.0,92.0
 2020-05-28,Oklahoma,4.0,41.0
 2020-05-29,Oklahoma,3.0,68.0
+2020-05-30,Oklahoma,5.0,80.0
 2020-02-28,Oregon,0.0,0.0
 2020-02-29,Oregon,0.0,0.0
 2020-03-01,Oregon,0.0,1.0
@@ -3501,6 +3540,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Oregon,0.0,71.0
 2020-05-28,Oregon,3.0,48.0
 2020-05-29,Oregon,0.0,45.0
+2020-05-30,Oregon,2.0,54.0
 2020-03-06,Pennsylvania,0.0,0.0
 2020-03-07,Pennsylvania,0.0,2.0
 2020-03-08,Pennsylvania,0.0,2.0
@@ -3586,6 +3626,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Pennsylvania,115.0,773.0
 2020-05-28,Pennsylvania,107.0,666.0
 2020-05-29,Pennsylvania,70.0,761.0
+2020-05-30,Pennsylvania,70.0,716.0
 2020-03-13,Puerto Rico,0.0,0.0
 2020-03-14,Puerto Rico,0.0,1.0
 2020-03-15,Puerto Rico,0.0,1.0
@@ -3664,6 +3705,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Puerto Rico,0.0,73.0
 2020-05-28,Puerto Rico,2.0,89.0
 2020-05-29,Puerto Rico,1.0,161.0
+2020-05-30,Puerto Rico,1.0,71.0
 2020-03-01,Rhode Island,0.0,0.0
 2020-03-02,Rhode Island,0.0,0.0
 2020-03-03,Rhode Island,0.0,0.0
@@ -3754,6 +3796,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Rhode Island,21.0,143.0
 2020-05-28,Rhode Island,22.0,141.0
 2020-05-29,Rhode Island,16.0,141.0
+2020-05-30,Rhode Island,18.0,184.0
 2020-03-06,South Carolina,0.0,0.0
 2020-03-07,South Carolina,0.0,0.0
 2020-03-08,South Carolina,0.0,4.0
@@ -3839,6 +3882,7 @@ date,state,new_deaths,new_cases
 2020-05-27,South Carolina,20.0,207.0
 2020-05-28,South Carolina,4.0,165.0
 2020-05-29,South Carolina,13.0,343.0
+2020-05-30,South Carolina,4.0,263.0
 2020-03-10,South Dakota,0.0,0.0
 2020-03-11,South Dakota,0.0,3.0
 2020-03-12,South Dakota,0.0,0.0
@@ -3920,6 +3964,7 @@ date,state,new_deaths,new_cases
 2020-05-27,South Dakota,4.0,57.0
 2020-05-28,South Dakota,0.0,83.0
 2020-05-29,South Dakota,5.0,73.0
+2020-05-30,South Dakota,3.0,94.0
 2020-03-05,Tennessee,0.0,0.0
 2020-03-06,Tennessee,0.0,0.0
 2020-03-07,Tennessee,0.0,0.0
@@ -4006,6 +4051,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Tennessee,14.0,400.0
 2020-05-28,Tennessee,-1.0,403.0
 2020-05-29,Tennessee,4.0,436.0
+2020-05-30,Tennessee,4.0,477.0
 2020-02-12,Texas,0.0,0.0
 2020-02-13,Texas,0.0,1.0
 2020-02-14,Texas,0.0,0.0
@@ -4114,6 +4160,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Texas,46.0,1502.0
 2020-05-28,Texas,20.0,1712.0
 2020-05-29,Texas,27.0,1275.0
+2020-05-30,Texas,31.0,1334.0
 2020-02-25,Utah,0.0,0.0
 2020-02-26,Utah,0.0,0.0
 2020-02-27,Utah,0.0,0.0
@@ -4209,6 +4256,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Utah,4.0,88.0
 2020-05-28,Utah,1.0,243.0
 2020-05-29,Utah,1.0,329.0
+2020-05-30,Utah,5.0,269.0
 2020-03-07,Vermont,0.0,0.0
 2020-03-08,Vermont,0.0,0.0
 2020-03-09,Vermont,0.0,0.0
@@ -4293,6 +4341,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Vermont,0.0,4.0
 2020-05-28,Vermont,1.0,3.0
 2020-05-29,Vermont,0.0,1.0
+2020-05-30,Vermont,0.0,2.0
 2020-03-07,Virginia,0.0,0.0
 2020-03-08,Virginia,0.0,1.0
 2020-03-09,Virginia,0.0,3.0
@@ -4377,6 +4426,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Virginia,45.0,907.0
 2020-05-28,Virginia,57.0,1152.0
 2020-05-29,Virginia,20.0,1132.0
+2020-05-30,Virginia,12.0,1078.0
 2020-03-14,Virgin Islands,0.0,0.0
 2020-03-15,Virgin Islands,0.0,0.0
 2020-03-16,Virgin Islands,0.0,1.0
@@ -4454,6 +4504,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Virgin Islands,0.0,0.0
 2020-05-28,Virgin Islands,0.0,0.0
 2020-05-29,Virgin Islands,0.0,0.0
+2020-05-30,Virgin Islands,0.0,0.0
 2020-01-21,Washington,0.0,0.0
 2020-01-22,Washington,0.0,0.0
 2020-01-23,Washington,0.0,0.0
@@ -4584,6 +4635,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Washington,15.0,287.0
 2020-05-28,Washington,10.0,260.0
 2020-05-29,Washington,4.0,284.0
+2020-05-30,Washington,6.0,125.0
 2020-03-17,West Virginia,0.0,0.0
 2020-03-18,West Virginia,0.0,1.0
 2020-03-19,West Virginia,0.0,3.0
@@ -4658,6 +4710,7 @@ date,state,new_deaths,new_cases
 2020-05-27,West Virginia,0.0,45.0
 2020-05-28,West Virginia,0.0,36.0
 2020-05-29,West Virginia,0.0,37.0
+2020-05-30,West Virginia,1.0,17.0
 2020-02-05,Wisconsin,0.0,0.0
 2020-02-06,Wisconsin,0.0,0.0
 2020-02-07,Wisconsin,0.0,0.0
@@ -4773,6 +4826,7 @@ date,state,new_deaths,new_cases
 2020-05-27,Wisconsin,22.0,642.0
 2020-05-28,Wisconsin,11.0,646.0
 2020-05-29,Wisconsin,19.0,573.0
+2020-05-30,Wisconsin,19.0,465.0
 2020-03-11,Wyoming,0.0,0.0
 2020-03-12,Wyoming,0.0,0.0
 2020-03-13,Wyoming,0.0,1.0
@@ -4853,3 +4907,4 @@ date,state,new_deaths,new_cases
 2020-05-27,Wyoming,1.0,10.0
 2020-05-28,Wyoming,1.0,16.0
 2020-05-29,Wyoming,0.0,15.0
+2020-05-30,Wyoming,1.0,7.0

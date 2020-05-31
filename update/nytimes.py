@@ -15,8 +15,9 @@ dynamic_tables = {
     'total_cases_by_state': 'us-states.csv'
 }
 
-mvs_files = [
-    'nyt_county_geo.sql'
+mvs_to_build = [
+    'nyt_daily_by_state',
+    'nyt_totals_by_state'
 ]
 
 flat_files = [
@@ -53,11 +54,12 @@ if __name__ == "__main__":
         nyt.load_data(table, filename, exists=table_exists)
 
     logger.info("Refreshing all NYTimes based MVs.")
-    sqler = mv.SQLizer(LOCAL)
 
-    for file in mvs_files:
-        logger.info(f"Working on {file}")
-        sqler.run_sql_file(file)
+    for mv_to_build in mvs_to_build:
+        sqler = mv.SQLizer(mv_to_build, LOCAL)
+        logger.info(f"Working on {mv_to_build}")
+        sqler.run_sql_file()
+        sqler.aux_transformations()
 
     logger.info("Refreshing all NYTimes based flat files.")
 
