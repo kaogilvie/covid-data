@@ -10,4 +10,4 @@ drop table if exists nytimes.daily_by_state;
               LAG(deaths, 1) OVER(PARTITION BY (state) ORDER BY (date)) as prev_deaths
               from nytimes.total_cases_by_state
             ) as sub
-  )
+  );

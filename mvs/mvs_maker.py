@@ -42,7 +42,9 @@ class SQLizer(object):
     def aux_transformations(self):
         if self.mv_config['aux_alterations'] is True:
             self.logger.info("Running aux transformations.")
-            self.transformer = mvs_aux.MVSAuxTransformer()
+            self.transformer = mvs_aux.MVSAuxTransformer(self.mv_name)
+            self.transformer.fetch_data()
+            self.transformer.execute_transformations()
         else:
             self.logger.info("No aux transformations needed.")
 
