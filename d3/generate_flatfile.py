@@ -51,11 +51,10 @@ if __name__ == "__main__":
 
     arguments = argparse.ArgumentParser()
     arguments.add_argument('-s', '--sql', help='sql to use from dict')
-    arguments.add_argument('-o', '--output', help='where to write the output file')
     args = arguments.parse_args()
 
     sql = args.sql
-    output = args.output
+    output = f"{args.sql}.csv"
     if sql is None:
         sql = 'daily_by_state'
         output = 'daily_by_state.csv'
