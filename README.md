@@ -57,3 +57,10 @@ This step is taken care of in the "dataset refresh" scripts, but can run indepen
 
 `cd /path/to/covid/repo`
 `python mvs/mvs_maker.py -s '{filename}.sql'`
+
+#### Generate flatfiles
+You can add flatfiles to generate quite easily.
+
+Add the SQL query you want to generate the flatfile to flatfiles/queries.py
+Then add the filepath to save it AND the name of the sql query to update/nytimes.py.
+Then just run `python update/nytimes.py`

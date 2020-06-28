@@ -15,7 +15,10 @@ sql_dict = {
                         WHERE date = '{today_date}'""",
     "daily_by_state": f"""SELECT date, state, deaths, cases
                         FROM nytimes.daily_by_state
-                       """
+                       """,
+    "daily_countrywide": f"""SELECT date, sum(deaths) as deaths, sum(cases) as cases
+                            FROM nytimes.daily_by_state
+                            GROUP BY date"""
 }
 
 ### NEED TO ADD THESE TO THE FULL FLOW
