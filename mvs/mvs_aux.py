@@ -54,8 +54,8 @@ class MVSAuxTransformer(object):
                 state_list.append({
                     'state': state,
                     'date': date.format('YYYY-MM-DD'),
-                    'new_deaths': 0,
-                    'new_cases': 0
+                    'deaths': 0,
+                    'cases': 0
                 })
 
             state_df = pd.DataFrame(state_list)

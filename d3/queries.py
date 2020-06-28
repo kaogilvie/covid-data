@@ -13,7 +13,7 @@ sql_dict = {
     "totals_by_state": f"""SELECT date, state, deaths, cases, ROW_NUMBER() OVER (PARTITION BY (date) ORDER BY cases desc) as rank
                         FROM nytimes.total_cases_by_state
                         WHERE date = '{today_date}'""",
-    "daily_by_state": f"""SELECT date, state, new_deaths, new_cases
+    "daily_by_state": f"""SELECT date, state, deaths, cases
                         FROM nytimes.daily_by_state
                        """
 }

@@ -26,6 +26,11 @@ flat_files = [
     'daily_by_state'
 ]
 
+file_path_list = [
+    '/Users/kogilvie/Documents/github/kaogilvie.github.io/totals_by_state.csv',
+    '/Users/kogilvie/Documents/github/kaogilvie.github.io/daily_by_state.csv'
+]
+
 file_exclusions = [
     '.DS_Store'
 ]
@@ -61,13 +66,14 @@ if __name__ == "__main__":
         flatFiler.fetch_data(sql)
         flatFiler.write_csv()
 
-    logger.info("Getting all tracked files.")
-    file_path_list = []
-    for dirpath, subdirs, files in os.walk(f'{local_config.data_repo_path}/data'):
-        for x in files:
-            if x in file_exclusions:
-                continue
-            file_path_list.append(os.path.join(dirpath, x))
+    # Can't use subfolders on github.io yet (no idea how)
+    # logger.info("Getting all tracked files in data subfolder.")
+    # file_path_list = []
+    # for dirpath, subdirs, files in os.walk(f'{local_config.data_repo_path}/data'):
+    #     for x in files:
+    #         if x in file_exclusions:
+    #             continue
+    #         file_path_list.append(os.path.join(dirpath, x))
 
     logger.info("Adding files to index.")
     github_io_repo = Repo(local_config.data_repo_path)
