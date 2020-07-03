@@ -24,13 +24,15 @@ mvs_to_build = [
 flat_files = [
     'totals_by_state',
     'daily_by_state',
-    'daily_countrywide'
+    'daily_countrywide',
+    'totals_countrywide'
 ]
 
 file_path_list = [
     '/Users/kogilvie/Documents/github/kaogilvie.github.io/totals_by_state.csv',
     '/Users/kogilvie/Documents/github/kaogilvie.github.io/daily_by_state.csv',
-    '/Users/kogilvie/Documents/github/kaogilvie.github.io/daily_countrywide.csv'
+    '/Users/kogilvie/Documents/github/kaogilvie.github.io/daily_countrywide.csv',
+    '/Users/kogilvie/Documents/github/kaogilvie.github.io/totals_countrywide.csv'
 ]
 
 file_exclusions = [

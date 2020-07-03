@@ -18,7 +18,9 @@ sql_dict = {
                        """,
     "daily_countrywide": f"""SELECT date, sum(deaths) as deaths, sum(cases) as cases
                             FROM nytimes.daily_by_state
-                            GROUP BY date"""
+                            GROUP BY date""",
+    "totals_countrywide": f"""SELECT sum(deaths) as deaths, sum(cases) as cases
+                            FROM nytimes.daily_by_state"""
 }
 
 ### NEED TO ADD THESE TO THE FULL FLOW

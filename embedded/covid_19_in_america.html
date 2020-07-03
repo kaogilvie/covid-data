@@ -1,0 +1,53 @@
+<style>g {
+  color: black;
+  }
+#observablehq-016e931c{
+  background: white;
+  padding: 5px;
+  }
+.observablehq-viewof-col_variable{
+	color: black;
+  }
+.observablehq-viewof-selectedState{
+	color: black;
+  }
+  .observablehq-viewof-barChartStartDateInput{
+	color: black;
+    align-self: center;
+  }
+ .observablehq-selection_legend{
+  	color: black;
+  }
+ .stak {
+   float: left;
+   margin: 10px;
+   padding: 10px;
+   border-style: none;
+   border-right-style: solid;
+   border-color: black;
+  }
+.last {
+  border-right-style:none;
+  }
+.
+</style>
+<div id="observablehq-016e931c">
+  <div class="observablehq-viewof-col_variable stak"></div>
+  <div class="observablehq-viewof-selectedState stak"></div>
+  <div class="observablehq-selection_legend stak last"></div>
+  <div class="observablehq-us_map"></div>
+  <div class="observablehq-viewof-barChartStartDateInput"></div>
+  <div class="observablehq-bar_chart"></div>
+</div>
+<script type="module">
+  import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+  import define from "https://api.observablehq.com/@kaogilvie/covid-19-in-america.js?v=3";
+  (new Runtime).module(define, name => {
+    if (name === "viewof col_variable") return Inspector.into("#observablehq-016e931c .observablehq-viewof-col_variable")();
+    if (name === "viewof selectedState") return Inspector.into("#observablehq-016e931c .observablehq-viewof-selectedState")();
+    if (name === "selection_legend") return Inspector.into("#observablehq-016e931c .observablehq-selection_legend")();
+    if (name === "us_map") return Inspector.into("#observablehq-016e931c .observablehq-us_map")();
+    if (name === "viewof barChartStartDateInput") return Inspector.into("#observablehq-016e931c .observablehq-viewof-barChartStartDateInput")();
+    if (name === "bar_chart") return Inspector.into("#observablehq-016e931c .observablehq-bar_chart")();
+  });
+</script>
