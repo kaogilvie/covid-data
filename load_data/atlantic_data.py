@@ -1,7 +1,25 @@
+from load_data import load_utils, download_from_api
 
+import requests
+import csv
 
-def addapt_numpy_int64(numpy_int64):
+def adapt_numpy_int64(numpy_int64):
     return(AsIs(numpy_int64))
+
+class ATLAPIInterface(download_from_api.APIInterface):
+    def __init__(self, local=True):
+        super().__init__(schema='atlantic')
+
+    def download_daily_csv(self):
+        api_payload = requests.get('https://covidtracking.com//api/v1/states/daily.csv')
+        payload_dump = csv.writer(open('/Users/kogilvie/Documents/github/local-covid-data/load_data/daily_state.csv', 'w+'))
+
+        decoded_content = api_payload.content.decode('utf-8')
+        read_csv = csv.reader(decoded_content.splitlines(), delimiter=',')
+
+        for line in read_csv:
+            payload_dump.writerow(line)
+
 
 class ATLDataLoader(load_utils.DataLoader):
     def __init__(self, local=True):
@@ -25,4 +43,18 @@ if __name__ == "__main__":
         table = f'daily_states'
         filename = f'daily_states.csv'
 
-    nyt = ATLDataLoader(False)
+    atl_api = ATLAPIInterface()
+
+    # atl_api.download_state_data()
+
+    api_payload = requests.get('https://covidtracking.com//api/v1/states/daily.csv')
+
+    payload_dump = csv.writer(open('/Users/kogilvie/Documents/github/local-covid-data/load_data/daily_state.csv', 'w+'))
+
+    decoded_content = api_payload.content.decode('utf-8')
+    read_csv = csv.reader(decoded_content.splitlines(), delimiter=',')
+
+    for line in read_csv:
+        payload_dump.writerow(line)
+
+    # nyt = ATLDataLoader(False)
