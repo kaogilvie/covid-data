@@ -1,19 +1,73 @@
+import csv
+import os
+import logging
 import argparse
 
+import psycopg2
+from psycopg2.extras import DictCursor
 import pandas as pd
 
 from psycopg2.extensions import register_adapter, AsIs
 import numpy
 
+from covid_utils import logs
 from covid_utils import connect
-from load_data import load_utils
+from covid_utils import credentials
+from covid_utils import local_config
+from load_data import DataLoader
 
 def addapt_numpy_int64(numpy_int64):
     return(AsIs(numpy_int64))
 
-class NTYDataLoader(load_utils.DataLoader):
+class NTYDataLoader(DataLoader):
     def __init__(self, local=True):
-        super().__init__(schema='nytimes')
+        logs.configure_logging('NTYDataLoader')
+        self.logger = logging.getLogger()
+
+        self.schema = 'nytimes'
+        self.file_root = os.path.expanduser(local_config.nytimes_github_path)
+
+        self.connect_to_postgres(local)
+
+    def pull_new_data(self):
+        self.logger.info("Pulling newest data.")
+        os.chdir(self.file_root)
+        stream = os.popen('git pull')
+        self.logger.info(f'{stream.read()}')
+        self.logger.info("Newest data pulled.")
+
+    def connect_to_postgres(self, local=True):
+        self.logger.info("Connecting to postgres..")
+        self.pg_creds = credentials.get_postgres_creds(local)
+        self.cxn = connect.dbconn(self.pg_creds)
+        self.cursor = self.cxn.cursor(cursor_factory=DictCursor)
+        self.logger.info("Connected to postgres at {}.".format(self.pg_creds['host']))
+
+    def get_most_recent_date(self, table, date_column='date'):
+        self.logger.info(f"Appending new data to {table}. First getting most recent data...")
+        self.cursor.execute(f"SELECT max({date_column}) FROM {self.schema}.{table};")
+        self.recent_date = self.cursor.fetchall()[0][0]
+
+    def check_table_exists(self, table):
+        self.cursor.execute(f"""SELECT EXISTS (
+                               SELECT FROM information_schema.tables
+                               WHERE  table_schema = '{self.schema}'
+                               AND    table_name   = '{table}'
+                               );""")
+        results = self.cursor.fetchone()
+        result = results[0]
+        self.logger.info(f"Table already exists: {result}")
+        return result
+
+    def fully_load_table(self, data_to_load, data_header, table):
+        self.logger.info(f"Initializing full load of {table}...")
+        self.cursor.copy_from(data_to_load, f'{self.schema}.{table}', sep=',', null="", columns=data_header)
+        self.cxn.commit()
+
+        self.logger.info("Loaded table fully...")
+        self.cursor.execute(f"SELECT count(*) FROM {self.schema}.{table};")
+        cnt = self.cursor.fetchall()
+        self.logger.info(f'...meaning {cnt[0][0]} rows.')
 
     def load_data(self, table, data_filename, exists=True, date_column='date'):
         self.logger.info("Accessing full reload data..")

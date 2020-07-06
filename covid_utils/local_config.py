@@ -1,5 +1,11 @@
-## Local path to NYTimes data repositor. '~'s are acceptable.
+## Local path to data repositories. '~'s are acceptable.
 nytimes_github_path = '~/Documents/github/nytimes-covid-data'
+atlantic_github_path = '~/Documents/github/atlantic-covid-data'
+
+github_paths = {
+    'nytimes': '~/Documents/github/nytimes-covid-data',
+    'atlantic': '~/Documents/github/atlantic-covid-data'
+}
 
 ## path to DATA repo -- this is used to fuel Observable Maps
 data_repo_path = '/Users/kogilvie/Documents/github/kaogilvie.github.io'
