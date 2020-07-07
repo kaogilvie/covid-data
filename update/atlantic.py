@@ -1,10 +1,33 @@
+from load_data import atlantic_data as atlantic
+from covid_utils import logs
+
+import logging
+
+# NYTIMES CONFIG
+dynamic_tables = {
+    'daily_state': 'daily_state.csv'
+}
+
+LOCAL = True
 
 def run_update():
-    pass
-    # load new data
+    logs.configure_logging('ATLTUpdater')
+    logger = logging.getLogger()
+
+    logger.info("Refreshing all Atlantic data.")
+
+    atl = atlantic.ATLDataLoader(LOCAL)
+    for table, filename in dynamic_tables.items():
+        logger.info(f"Working on {table}")
+        atl.download_daily_data(filename)
+        table_exists = atl.check_table_exists(table)
+        atl.load_data(table, filename, exists=table_exists)
 
     # refresh MVs
 
     # refresh flatfiles
 
     # push flatfiles to git
+
+if __name__ == "__main__":
+    run_update()

@@ -1,4 +1,4 @@
-from load_data import load_utils, download_from_api
+from load_data import load_utils
 
 import requests
 import arrow
