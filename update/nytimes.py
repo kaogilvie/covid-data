@@ -41,8 +41,7 @@ file_exclusions = [
 
 LOCAL = True
 
-if __name__ == "__main__":
-
+def run_update():
     logs.configure_logging('NYTUpdater')
     logger = logging.getLogger()
 
@@ -70,15 +69,6 @@ if __name__ == "__main__":
         flatFiler.fetch_data(sql)
         flatFiler.write_csv()
 
-    # Can't use subfolders on github.io yet (no idea how)
-    # logger.info("Getting all tracked files in data subfolder.")
-    # file_path_list = []
-    # for dirpath, subdirs, files in os.walk(f'{local_config.data_repo_path}/data'):
-    #     for x in files:
-    #         if x in file_exclusions:
-    #             continue
-    #         file_path_list.append(os.path.join(dirpath, x))
-
     logger.info("Adding files to index.")
     github_io_repo = Repo(local_config.data_repo_path)
     for file in file_path_list:
@@ -90,3 +80,6 @@ if __name__ == "__main__":
     logger.info("Pushing updates to remote.")
     github_io_origin = github_io_repo.remotes.origin
     github_io_origin.push()
+
+if __name__ == "__main__":
+    run_update()
