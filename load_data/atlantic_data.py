@@ -1,29 +1,84 @@
 from load_data import load_utils, download_from_api
 
 import requests
+import arrow
 import csv
+from psycopg2.extensions import register_adapter, AsIs
+import numpy
+import json
 
-def adapt_numpy_int64(numpy_int64):
+from collections import OrderedDict
+
+def addapt_numpy_int64(numpy_int64):
     return(AsIs(numpy_int64))
-
-class ATLAPIInterface(download_from_api.APIInterface):
-    def __init__(self, local=True):
-        super().__init__(schema='atlantic')
-
-    def download_daily_csv(self):
-        api_payload = requests.get('https://covidtracking.com//api/v1/states/daily.csv')
-        payload_dump = csv.writer(open('/Users/kogilvie/Documents/github/local-covid-data/load_data/daily_state.csv', 'w+'))
-
-        decoded_content = api_payload.content.decode('utf-8')
-        read_csv = csv.reader(decoded_content.splitlines(), delimiter=',')
-
-        for line in read_csv:
-            payload_dump.writerow(line)
-
 
 class ATLDataLoader(load_utils.DataLoader):
     def __init__(self, local=True):
         super().__init__(schema='atlantic')
+
+    def download_daily_json(self, filename):
+        api_payload = requests.get('https://covidtracking.com/api/v1/states/daily.json')
+        json.loads(api_payload.content)[0]
+
+    def download_daily_csv(self, filename):
+        api_payload = requests.get('https://covidtracking.com/api/v1/states/daily.json')
+        header = ['date', 'state', 'fips', 'lastUpdateEt', 'dataQualityGrade', 'positive',
+                    'negative', 'pending', 'recovered', 'death', 'hospitalizedCurrently', 'hospitalizedCumulative',
+                    'inIcuCurrently', 'inIcuCumulative', 'onVentilatorCurrently', 'onVentilatorCumulative',
+                    'negativeTestsViral', 'positiveTestsViral', 'positiveCasesViral', 'totalTestsViral',
+                    'totalTestResults', 'positiveIncrease', 'deathIncrease', 'hospitalizedIncrease', 'totalTestResultsIncrease']
+
+        with open(f'{self.file_root}/{filename}', 'w+') as header_file:
+            header_dump = csv.writer(header_file)
+            header_dump.writerow(header)
+        payload_dump = csv.writer(open(f'{self.file_root}/{filename}', 'a'))
+        # , quotechar="'", quoting=csv.QUOTE_NONNUMERIC)
+
+        # splitted = decoded_content.splitlines()[1:]
+        # for line in splitted:
+        #     fields = line.split(',')
+        #     write_dict = OrderedDict()
+        #     for field, head in zip(fields, header):
+        #         if head.lower() not in ('state', 'datequalitygrade'):
+        #             if field == '':
+        #                 field = 0
+        #             else:
+        #                 field = int(field)
+        #         write_dict[head] = field
+
+        for write_dict in json.loads(api_payload.content):
+                for key, value in write_dict.items():
+                    if key.lower() not in ('state', 'datequalitygrade'):
+                        if value == '':
+                            field = 0
+                payload_dump.writerow([
+                    arrow.get(str(write_dict['date']), 'YYYYMMDD').format('YYYY-MM-DD'),
+                    write_dict['state'],
+            		write_dict['fips'],
+            		write_dict['lastUpdateEt'],
+            		write_dict['dataQualityGrade'],
+            		write_dict['positive'],
+            		write_dict['negative'],
+            		write_dict['pending'],
+            		write_dict['recovered'],
+            		write_dict['death'],
+            		write_dict['hospitalizedCurrently'],
+            		write_dict['hospitalizedCumulative'],
+            		write_dict['inIcuCurrently'],
+            		write_dict['inIcuCumulative'],
+            		write_dict['onVentilatorCurrently'],
+            		write_dict['onVentilatorCumulative'],
+            		write_dict['negativeTestsViral'],
+            		write_dict['positiveTestsViral'],
+            		write_dict['positiveCasesViral'],
+            		write_dict['totalTestsViral'],
+            		write_dict['totalTestResults'],
+            		write_dict['positiveIncrease'],
+            		write_dict['deathIncrease'],
+            		write_dict['hospitalizedIncrease'],
+            		write_dict['totalTestResultsIncrease']
+                ])
+
 
 if __name__ == "__main__":
 
@@ -40,21 +95,11 @@ if __name__ == "__main__":
     local = False
     if table is None:
         local = True
-        table = f'daily_states'
-        filename = f'daily_states.csv'
+        table = f'daily_state'
+        filename = f'daily_state.csv'
 
-    atl_api = ATLAPIInterface()
+    atl= ATLDataLoader()
+    atl.download_daily_csv(filename)
+    exists = atl.check_table_exists(table=table)
 
-    # atl_api.download_state_data()
-
-    api_payload = requests.get('https://covidtracking.com//api/v1/states/daily.csv')
-
-    payload_dump = csv.writer(open('/Users/kogilvie/Documents/github/local-covid-data/load_data/daily_state.csv', 'w+'))
-
-    decoded_content = api_payload.content.decode('utf-8')
-    read_csv = csv.reader(decoded_content.splitlines(), delimiter=',')
-
-    for line in read_csv:
-        payload_dump.writerow(line)
-
-    # nyt = ATLDataLoader(False)
+    atl.load_data(table, filename, exists=exists)

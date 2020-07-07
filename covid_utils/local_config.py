@@ -1,6 +1,4 @@
 ## Local path to data repositories. '~'s are acceptable.
-nytimes_github_path = '~/Documents/github/nytimes-covid-data'
-atlantic_github_path = '~/Documents/github/atlantic-covid-data'
 
 github_paths = {
     'nytimes': '~/Documents/github/nytimes-covid-data',

@@ -10,7 +10,6 @@ CREATE TABLE atlantic.daily_state
 		positive int,
 		negative int,
 		pending int,
-	  cases int,
 		recovered int,
 		death int,
 		hospitalizedCurrently int,

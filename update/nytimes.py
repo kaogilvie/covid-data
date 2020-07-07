@@ -49,7 +49,7 @@ if __name__ == "__main__":
     logger.info("Refreshing all NYTimes data.")
 
     nyt = times.NTYDataLoader(LOCAL)
-    nyt.pull_new_data()
+    nyt.pull_new_github_data()
     for table, filename in dynamic_tables.items():
         logger.info(f"Working on {table}")
         table_exists = nyt.check_table_exists(table)

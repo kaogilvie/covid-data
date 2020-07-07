@@ -56,7 +56,7 @@ class DataLoader(object):
 
     def fully_load_table(self, data_to_load, data_header, table):
         self.logger.info(f"Initializing full load of {table}...")
-        self.cursor.copy_from(data_to_load, f'{self.schema}.{table}', sep=',', null="", columns=data_header)
+        self.cursor.copy_from(data_to_load, f'{self.schema}.{table}', sep=',', null='', columns=data_header)
         self.cxn.commit()
 
         self.logger.info("Loaded table fully...")
@@ -69,6 +69,7 @@ class DataLoader(object):
         full_filename = f'{self.file_root}/{data_filename}'
         data_to_load = open(full_filename, 'r')
         data_header = next(data_to_load).strip().split(',')
+        print(data_header)
 
         if exists is False:
             self.logger.info("Connecting to Postgres via SQLAlchemy for pandas.")
