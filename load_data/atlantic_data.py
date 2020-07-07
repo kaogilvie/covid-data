@@ -16,11 +16,7 @@ class ATLDataLoader(load_utils.DataLoader):
     def __init__(self, local=True):
         super().__init__(schema='atlantic')
 
-    def download_daily_json(self, filename):
-        api_payload = requests.get('https://covidtracking.com/api/v1/states/daily.json')
-        json.loads(api_payload.content)[0]
-
-    def download_daily_csv(self, filename):
+    def download_daily_data(self, filename):
         api_payload = requests.get('https://covidtracking.com/api/v1/states/daily.json')
         header = ['date', 'state', 'fips', 'lastUpdateEt', 'dataQualityGrade', 'positive',
                     'negative', 'pending', 'recovered', 'death', 'hospitalizedCurrently', 'hospitalizedCumulative',
@@ -32,19 +28,6 @@ class ATLDataLoader(load_utils.DataLoader):
             header_dump = csv.writer(header_file)
             header_dump.writerow(header)
         payload_dump = csv.writer(open(f'{self.file_root}/{filename}', 'a'))
-        # , quotechar="'", quoting=csv.QUOTE_NONNUMERIC)
-
-        # splitted = decoded_content.splitlines()[1:]
-        # for line in splitted:
-        #     fields = line.split(',')
-        #     write_dict = OrderedDict()
-        #     for field, head in zip(fields, header):
-        #         if head.lower() not in ('state', 'datequalitygrade'):
-        #             if field == '':
-        #                 field = 0
-        #             else:
-        #                 field = int(field)
-        #         write_dict[head] = field
 
         for write_dict in json.loads(api_payload.content):
                 for key, value in write_dict.items():
@@ -99,7 +82,6 @@ if __name__ == "__main__":
         filename = f'daily_state.csv'
 
     atl= ATLDataLoader()
-    atl.download_daily_csv(filename)
+    atl.download_daily_data(filename)
     exists = atl.check_table_exists(table=table)
-
     atl.load_data(table, filename, exists=exists)
