@@ -18,11 +18,11 @@ class ATLDataLoader(load_utils.DataLoader):
 
     def download_daily_data(self, filename):
         api_payload = requests.get('https://covidtracking.com/api/v1/states/daily.json')
-        header = ['date', 'state', 'fips', 'lastUpdateEt', 'dataQualityGrade', 'positive',
-                    'negative', 'pending', 'recovered', 'death', 'hospitalizedCurrently', 'hospitalizedCumulative',
-                    'inIcuCurrently', 'inIcuCumulative', 'onVentilatorCurrently', 'onVentilatorCumulative',
-                    'negativeTestsViral', 'positiveTestsViral', 'positiveCasesViral', 'totalTestsViral',
-                    'totalTestResults', 'positiveIncrease', 'deathIncrease', 'hospitalizedIncrease', 'totalTestResultsIncrease']
+        header = ['date', 'state', 'fips', 'lastupdateet', 'dataqualitygrade', 'positive',
+                    'negative', 'pending', 'recovered', 'death', 'hospitalizedcurrently', 'hospitalizedcumulative',
+                    'inicucurrently', 'inicucumulative', 'onventilatorcurrently', 'onventilatorcumulative',
+                    'negativetestsviral', 'positivetestsviral', 'positivecasesviral', 'totaltestsviral',
+                    'totaltestresults', 'positiveincrease', 'deathincrease', 'hospitalizedincrease', 'totaltestresultsincrease']
 
         with open(f'{self.file_root}/{filename}', 'w+') as header_file:
             header_dump = csv.writer(header_file)

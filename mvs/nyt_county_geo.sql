@@ -4,5 +4,5 @@ create table nytimes.total_cases_county_geo AS
 	b.fips, b.ansicode, b.lat, b.lng, b.name
 	FROM nytimes.total_cases_by_county a
 	JOIN aux.fips_to_latlng b
-	ON a.fips = b.fips
+	ON a.fips::text = b.fips
 	);
