@@ -14,21 +14,19 @@ class DataLoader(object):
     def __init__(self, schema='nytimes', env='local'):
         logs.configure_logging(f'{schema.capitalize()}DataLoader')
         self.logger = logging.getLogger()
+        self.schema = schema
 
         self.env = env
         if self.env == 'local':
             from config import local as env_config
         else:
             from config import heroku as env_config
-
         self.github_info = env_config.github_info
         self.data_repo_path = env_config.data_repo_path
-
-        self.schema = schema
+        self.path_to_this_repo = env_config.path_to_this_repo
 
         self.github_path = self.github_info[schema]['git_file_path']
         self.github_url = self.github_info[schema]['git_url']
-
         self.logger.info(f"Path to this repo:{self.path_to_this_repo}")
         self.file_root = os.path.expanduser(self.path_to_this_repo)
         self.logger.info(f"File root:{self.file_root}")
