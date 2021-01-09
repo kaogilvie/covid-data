@@ -29,7 +29,7 @@ class DataLoader(object):
         self.github_path = self.github_info[schema]['git_file_path']
         self.github_url = self.github_info[schema]['git_url']
 
-        self.logger.info(f"Path to this repo:{self.path_to_this_repo}"")
+        self.logger.info(f"Path to this repo:{self.path_to_this_repo}")
         self.file_root = os.path.expanduser(self.path_to_this_repo)
         self.logger.info(f"File root:{self.file_root}"")
 
