@@ -31,7 +31,7 @@ class DataLoader(object):
 
         self.logger.info(f"Path to this repo:{self.path_to_this_repo}")
         self.file_root = os.path.expanduser(self.path_to_this_repo)
-        self.logger.info(f"File root:{self.file_root}"")
+        self.logger.info(f"File root:{self.file_root}")
 
         self.connect_to_postgres()
 
