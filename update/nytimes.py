@@ -55,14 +55,14 @@ def run_update(env):
     logger.info("Refreshing all NYTimes based MVs.")
 
     for mv_to_build in mvs_to_build:
-        sqler = mv.SQLizer(mv_to_build, LOCAL)
+        sqler = mv.SQLizer(mv_to_build, env)
         logger.info(f"Working on {mv_to_build}")
         sqler.run_sql_file()
         sqler.aux_transformations()
 
     logger.info("Refreshing all NYTimes based flat files.")
 
-    flatFiler = ff.FlatFileGenerator(LOCAL)
+    flatFiler = ff.FlatFileGenerator(env)
     for sql in flat_files:
         flatFiler.fetch_data(sql)
         flatFiler.write_csv()

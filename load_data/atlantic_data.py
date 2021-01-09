@@ -14,7 +14,7 @@ def addapt_numpy_int64(numpy_int64):
 
 class ATLDataLoader(load_utils.DataLoader):
     def __init__(self, env='local'):
-        super().__init__(schema='atlantic')
+        super().__init__(schema='atlantic', env=env)
 
     def download_daily_data(self, filename):
         api_payload = requests.get('https://covidtracking.com/api/v1/states/daily.json')

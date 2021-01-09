@@ -10,23 +10,22 @@ from covid_utils import local_config
 
 from d3 import queries
 
-LOCAL = True
-
 class FlatFileGenerator(object):
-    def __init__(self, local=True):
+    def __init__(self, env='local'):
         logs.configure_logging('FFGenerator')
         self.logger = logging.getLogger()
 
+        self.env = env
         self.data_file_root = os.path.expanduser(local_config.data_repo_path)
 
         self.sql_dict = queries.sql_dict
 
-        self.connect_to_postgres(local)
+        self.connect_to_postgres()
 
-    def connect_to_postgres(self, local=True):
+    def connect_to_postgres(self):
         self.logger.info("Connecting to postgres..")
-        self.pg_creds = credentials.get_postgres_creds(local)
-        self.conn = connect.pandas_dbconn(self.pg_creds)
+        self.pg_creds = credentials.get_postgres_creds(self.env)
+        self.conn = connect.pandas_dbconn(self.pg_creds, self.env)
         self.logger.info("Connected to postgres at {}.".format(self.pg_creds['host']))
 
     def fetch_data(self, sql):
@@ -52,6 +51,7 @@ if __name__ == "__main__":
 
     arguments = argparse.ArgumentParser()
     arguments.add_argument('-s', '--sql', help='sql to use from dict')
+    arguments.add_argument('-e', '--env', help='environment this script is running in', default='local')
     args = arguments.parse_args()
 
     sql = args.sql
@@ -60,6 +60,6 @@ if __name__ == "__main__":
         sql = 'daily_by_state'
         output = 'daily_by_state.csv'
 
-    ff = FlatFileGenerator(LOCAL)
+    ff = FlatFileGenerator(env)
     ff.fetch_data(sql)
     ff.write_csv()

@@ -17,12 +17,13 @@ class DataLoader(object):
         logs.configure_logging(f'{schema.capitalize()}DataLoader')
         self.logger = logging.getLogger()
 
+        self.env = env
         self.schema = schema
 
         self.github_path = local_config.github_paths[schema]
         self.file_root = os.path.expanduser(self.github_path)
 
-        self.connect_to_postgres(env)
+        self.connect_to_postgres()
 
     def pull_new_github_data(self):
         self.logger.info("Pulling newest data.")
@@ -31,10 +32,10 @@ class DataLoader(object):
         self.logger.info(f'{stream.read()}')
         self.logger.info("Newest data pulled.")
 
-    def connect_to_postgres(self, env='local'):
+    def connect_to_postgres(self):
         self.logger.info("Connecting to postgres..")
-        self.pg_creds = credentials.get_postgres_creds(env)
-        self.cxn = connect.dbconn(self.pg_creds)
+        self.pg_creds = credentials.get_postgres_creds(self.env)
+        self.cxn = connect.dbconn(self.pg_creds, self.env)
         self.cursor = self.cxn.cursor(cursor_factory=DictCursor)
         self.logger.info("Connected to postgres at {}.".format(self.pg_creds['host']))
 

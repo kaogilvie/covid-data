@@ -11,22 +11,23 @@ import pandas as pd
 import arrow
 
 class MVSAuxTransformer(object):
-    def __init__(self, mv_name):
+    def __init__(self, mv_name, env='local'):
         logs.configure_logging('AuxTransformer')
         self.logger = logging.getLogger()
 
+        self.env = env
         self.mv_name = mv_name
         self.logger.info(f"Transforming {self.mv_name} further.")
 
         self.connect_to_postgres()
 
-    def connect_to_postgres(self, local=True):
+    def connect_to_postgres(self):
         self.logger.info("Connecting to postgres..")
-        self.pg_creds = credentials.get_postgres_creds(local)
-        self.cxn = connect.dbconn(self.pg_creds)
+        self.pg_creds = credentials.get_postgres_creds(self.env)
+        self.cxn = connect.dbconn(self.pg_creds, self.env)
         self.cursor = self.cxn.cursor(cursor_factory=DictCursor)
-        self.pd_cxn = connect.pandas_dbconn(self.pg_creds)
-        self.logger.info("Connected to postgres at {}.".format(self.pg_creds['host']))
+        self.pd_cxn = connect.pandas_dbconn(self.pg_creds, self.env)
+        self.logger.info("Connected to postgres at {}.".format(self.pg_creds['host']))          
 
     def fetch_data(self):
         grab_table_sql = f"""SELECT * FROM {mvs_config.config[self.mv_name]['output_schema']}.{mvs_config.config[self.mv_name]['output_table']}"""

@@ -13,20 +13,21 @@ from mvs import mvs_config
 from mvs import mvs_aux
 
 class SQLizer(object):
-    def __init__(self, mv_name, local=True):
+    def __init__(self, mv_name, env='local'):
         logs.configure_logging('SQLzier')
         self.logger = logging.getLogger()
 
+        self.env = env
         self.file_root = os.path.expanduser(local_config.path_to_this_repo)
 
-        self.connect_to_postgres(local)
+        self.connect_to_postgres()
         self.mv_name = mv_name
         self.mv_config = mvs_config.config[self.mv_name]
 
-    def connect_to_postgres(self, local=True):
+    def connect_to_postgres(self,):
         self.logger.info("Connecting to postgres..")
-        self.pg_creds = credentials.get_postgres_creds(local)
-        self.cxn = connect.dbconn(self.pg_creds)
+        self.pg_creds = credentials.get_postgres_creds(self.env)
+        self.cxn = connect.dbconn(self.pg_creds, self.env)
         self.cursor = self.cxn.cursor(cursor_factory=DictCursor)
         self.logger.info("Connected to postgres at {}.".format(self.pg_creds['host']))
 

@@ -3,11 +3,7 @@ import os
 def get_postgres_creds(env='local'):
     if env == 'prod':
         creds = {
-                'user': os.getenv('COVID_HEROKU_USER'),
-                'password': os.getenv('COVID_HEROKU_DB_PW'),
-                'host': os.getenv('COVID_HEROKU_HOST'),
-                'port': os.getenv('COVID_HEROKU_PORT'),
-                'database': os.getenv('COVID_HEROKU_DB')
+                'host': os.getenv('DATABASE_URL')
             }
     elif env == 'local':
         creds = {
