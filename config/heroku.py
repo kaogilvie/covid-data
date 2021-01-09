@@ -18,7 +18,7 @@ data_repo_path = '~/kaogilvie.github.io'
 ## add the covid repo to your PYTHONPATH. (You can also do this in your
 ## .bashrc, .bash_profile, or .profile if you'd like). This block will
 ## run upon import into any scripts.
-path_to_this_repo = '/app/'
+path_to_this_repo = '~'
 import sys
 import os
 sys.path.insert(0, os.path.expanduser(path_to_this_repo))
