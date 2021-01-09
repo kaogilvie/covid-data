@@ -29,14 +29,16 @@ class DataLoader(object):
         self.github_path = self.github_info[schema]['git_file_path']
         self.github_url = self.github_info[schema]['git_url']
 
-        self.file_root = os.path.expanduser(self.github_path)
+        self.logger.info(f"Path to this repo:{self.path_to_this_repo}"")
+        self.file_root = os.path.expanduser(self.path_to_this_repo)
+        self.logger.info(f"File root:{self.file_root}"")
 
         self.connect_to_postgres()
 
     def pull_new_github_data(self):
-        if os.path.isdir(self.file_root):
+        if os.path.isdir(self.github_path):
             self.logger.info("Pulling newest data.")
-            os.chdir(self.file_root)
+            os.chdir(self.github_path)
             stream = os.popen('git pull')
             self.logger.info(f'{stream.read()}')
             self.logger.info("Newest data pulled.")
