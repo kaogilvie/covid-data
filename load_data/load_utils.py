@@ -6,7 +6,6 @@ import psycopg2
 from psycopg2.extras import DictCursor
 import pandas as pd
 
-from covid_utils import local_config
 from covid_utils import logs
 from load_data import load_utils
 from covid_utils import connect
@@ -18,9 +17,17 @@ class DataLoader(object):
         self.logger = logging.getLogger()
 
         self.env = env
+        if self.env == 'local':
+            from config import local as env_config
+        else:
+            from config import heroku as env_config
+
+        self.github_paths = env_config.github_path
+        self.data_repo_path = env_config.data_repo_path
+
         self.schema = schema
 
-        self.github_path = local_config.github_paths[schema]
+        self.github_path = self.github_paths[schema]
         self.file_root = os.path.expanduser(self.github_path)
 
         self.connect_to_postgres()

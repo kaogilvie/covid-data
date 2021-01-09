@@ -13,21 +13,29 @@ import numpy
 from covid_utils import logs
 from covid_utils import connect
 from covid_utils import credentials
-from covid_utils import local_config
 
 class StaticCSVLoader(object):
-    def __init__(self, local=True):
+    def __init__(self, env='local'):
         logs.configure_logging('StaticCSVLoader')
         self.logger = logging.getLogger()
 
-        self.schema = 'aux'
-        self.file_root = os.path.expanduser(local_config.path_to_this_repo)
-        self.connect_to_postgres(local)
+        self.env = env
+        if self.env == 'local':
+            from config import local as env_config
+        else:
+            from config import heroku as env_config
 
-    def connect_to_postgres(self, local=True):
+        self.github_paths = env_config.github_path
+        self.data_repo_path = env_config.data_repo_path
+
+        self.schema = 'aux'
+        self.file_root = os.path.expanduser(self.path_to_this_repo)
+        self.connect_to_postgres()
+
+    def connect_to_postgres(self):
         self.logger.info("Connecting to postgres..")
-        self.pg_creds = credentials.get_postgres_creds(local)
-        self.cxn = connect.dbconn(self.pg_creds)
+        self.pg_creds = credentials.get_postgres_creds(self.env)
+        self.cxn = connect.dbconn(self.pg_creds, self.env)
         self.cursor = self.cxn.cursor(cursor_factory=DictCursor)
         self.logger.info("Connected to postgres at {}.".format(self.pg_creds['host']))
 

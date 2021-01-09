@@ -1,7 +1,6 @@
 from load_data import nytimes_data as times
 from mvs import mvs_maker as mv
 from covid_utils import logs
-from covid_utils import local_config
 from d3 import generate_flatfile as ff
 
 import logging
@@ -68,7 +67,7 @@ def run_update(env):
         flatFiler.write_csv()
 
     logger.info("Adding files to index.")
-    github_io_repo = Repo(local_config.data_repo_path)
+    github_io_repo = Repo(self.data_repo_path)
     for file in file_path_list:
         github_io_repo.index.add(file)
 

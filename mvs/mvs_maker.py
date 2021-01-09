@@ -7,7 +7,6 @@ from psycopg2.extras import DictCursor
 from covid_utils import logs
 from covid_utils import connect
 from covid_utils import credentials
-from covid_utils import local_config
 
 from mvs import mvs_config
 from mvs import mvs_aux
@@ -18,7 +17,15 @@ class SQLizer(object):
         self.logger = logging.getLogger()
 
         self.env = env
-        self.file_root = os.path.expanduser(local_config.path_to_this_repo)
+        if self.env == 'local':
+            from config import local as env_config
+        else:
+            from config import heroku as env_config
+
+        self.github_paths = env_config.github_path
+        self.data_repo_path = env_config.data_repo_path
+        self.path_to_this_repo = env_config.path_to_this_repo
+        self.file_root = os.path.expanduser(self.path_to_this_repo)
 
         self.connect_to_postgres()
         self.mv_name = mv_name

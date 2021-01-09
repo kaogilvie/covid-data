@@ -6,7 +6,6 @@ import pandas as pd
 from covid_utils import logs
 from covid_utils import connect
 from covid_utils import credentials
-from covid_utils import local_config
 
 from d3 import queries
 
@@ -16,7 +15,15 @@ class FlatFileGenerator(object):
         self.logger = logging.getLogger()
 
         self.env = env
-        self.data_file_root = os.path.expanduser(local_config.data_repo_path)
+        if self.env == 'local':
+            from config import local as env_config
+        else:
+            from config import heroku as env_config
+
+        self.github_paths = env_config.github_path
+        self.data_repo_path = env_config.data_repo_path
+
+        self.data_file_root = os.path.expanduser(self.data_repo_path)
 
         self.sql_dict = queries.sql_dict
 

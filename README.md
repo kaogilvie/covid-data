@@ -13,7 +13,7 @@ Some early notes [here](https://docs.google.com/document/d/1sQNuf-2Iud6JJ5V0mbTW
   If you want to change the postgres db name from 'covid' to something else OR
   update the postgres port, update the connect.py file in covid_utils & the docker-compose file.
 - If you'd like to load data, clone the necessary repos (see the "data" section),
-then check out the local_config.py file. This file contains the place where you'd
+then check out the config/local.py file. This file contains the place where you'd
 hardcode paths for your local machine. You can be as abstract or as deliberate as you like.
 - If you have a local Postgres install, make sure it isn't masking the ports that
 the docker-compose file exposes. I ran into this problem on OSX and just spun down

@@ -1,7 +1,6 @@
 from covid_utils import logs
 from covid_utils import connect
 from covid_utils import credentials
-from covid_utils import local_config
 from mvs import mvs_config
 
 import logging
@@ -27,7 +26,7 @@ class MVSAuxTransformer(object):
         self.cxn = connect.dbconn(self.pg_creds, self.env)
         self.cursor = self.cxn.cursor(cursor_factory=DictCursor)
         self.pd_cxn = connect.pandas_dbconn(self.pg_creds, self.env)
-        self.logger.info("Connected to postgres at {}.".format(self.pg_creds['host']))          
+        self.logger.info("Connected to postgres at {}.".format(self.pg_creds['host']))
 
     def fetch_data(self):
         grab_table_sql = f"""SELECT * FROM {mvs_config.config[self.mv_name]['output_schema']}.{mvs_config.config[self.mv_name]['output_table']}"""
