@@ -22,7 +22,7 @@ class FlatFileGenerator(object):
 
         self.data_repo_path = env_config.data_repo_path
         self.data_file_root = os.path.expanduser(self.data_repo_path)
-        self.data_git_url = 'git@github.com:kaogilvie/kaogilvie.github.io.git'
+        self.data_git_url = 'https://github.com/kaogilvie/kaogilvie.github.io.git'
 
         self.sql_dict = queries.sql_dict
 

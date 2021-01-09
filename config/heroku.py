@@ -3,7 +3,7 @@
 github_info = {
     'nytimes': {
         'git_file_path': '~/nytimes-covid-data',
-        'git_url' : 'git@github.com:nytimes/covid-19-data.git'
+        'git_url' : 'https://github.com/nytimes/covid-19-data.git'
     },
     'atlantic': {
         'git_file_path': '~/atlantic-covid-data',
