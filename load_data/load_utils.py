@@ -27,9 +27,7 @@ class DataLoader(object):
 
         self.github_path = self.github_info[schema]['git_file_path']
         self.github_url = self.github_info[schema]['git_url']
-        self.logger.info(f"Path to this repo:{self.path_to_this_repo}")
         self.file_root = os.path.expanduser(self.path_to_this_repo)
-        self.logger.info(f"File root:{self.file_root}")
 
         self.connect_to_postgres()
 
@@ -82,7 +80,7 @@ class DataLoader(object):
 
     def load_data(self, table, data_filename, exists=True, date_column='date'):
         self.logger.info("Accessing full reload data..")
-        full_filename = f'{self.file_root}/{data_filename}'
+        full_filename = f'{self.git_file_path}/{data_filename}'
         data_to_load = open(full_filename, 'r')
         data_header = next(data_to_load).strip().split(',')
         print(data_header)
