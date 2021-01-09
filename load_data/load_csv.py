@@ -25,7 +25,6 @@ class StaticCSVLoader(object):
         else:
             from config import heroku as env_config
 
-        self.github_paths = env_config.github_path
         self.data_repo_path = env_config.data_repo_path
 
         self.schema = 'aux'

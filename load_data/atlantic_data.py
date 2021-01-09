@@ -24,6 +24,8 @@ class ATLDataLoader(load_utils.DataLoader):
                     'negativetestsviral', 'positivetestsviral', 'positivecasesviral', 'totaltestsviral',
                     'totaltestresults', 'positiveincrease', 'deathincrease', 'hospitalizedincrease', 'totaltestresultsincrease']
 
+        if not os.path.isdir(self.fileroot):
+            os.path.mkdir(self.fileroot)
         with open(f'{self.file_root}/{filename}', 'w+') as header_file:
             header_dump = csv.writer(header_file)
             header_dump.writerow(header)

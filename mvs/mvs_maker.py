@@ -22,7 +22,6 @@ class SQLizer(object):
         else:
             from config import heroku as env_config
 
-        self.github_paths = env_config.github_path
         self.data_repo_path = env_config.data_repo_path
         self.path_to_this_repo = env_config.path_to_this_repo
         self.file_root = os.path.expanduser(self.path_to_this_repo)

@@ -67,6 +67,10 @@ def run_update(env):
         flatFiler.write_csv()
 
     logger.info("Adding files to index.")
+    if not os.path.isdir(nyt.data_repo_path):
+        stream = os.popen(f'git clone {flatFiler.data_git_url}')
+        self.logger.info(f'{stream.read()}')
+        self.logger.info("Data git repo cloned.")
     github_io_repo = Repo(self.data_repo_path)
     for file in file_path_list:
         github_io_repo.index.add(file)

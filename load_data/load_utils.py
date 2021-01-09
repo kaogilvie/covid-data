@@ -7,7 +7,6 @@ from psycopg2.extras import DictCursor
 import pandas as pd
 
 from covid_utils import logs
-from load_data import load_utils
 from covid_utils import connect
 from covid_utils import credentials
 
@@ -22,22 +21,31 @@ class DataLoader(object):
         else:
             from config import heroku as env_config
 
-        self.github_paths = env_config.github_paths
+        self.github_info = env_config.github_info
         self.data_repo_path = env_config.data_repo_path
 
         self.schema = schema
 
-        self.github_path = self.github_paths[schema]
+        self.github_path = self.github_info[schema]['git_file_path']
+        self.github_url = self.github_info[schema]['git_url']
+
         self.file_root = os.path.expanduser(self.github_path)
 
         self.connect_to_postgres()
 
     def pull_new_github_data(self):
-        self.logger.info("Pulling newest data.")
-        os.chdir(self.file_root)
-        stream = os.popen('git pull')
-        self.logger.info(f'{stream.read()}')
-        self.logger.info("Newest data pulled.")
+        if os.path.isdir(self.file_root):
+            self.logger.info("Pulling newest data.")
+            os.chdir(self.file_root)
+            stream = os.popen('git pull')
+            self.logger.info(f'{stream.read()}')
+            self.logger.info("Newest data pulled.")
+        else:
+            self.logger.info(f"Directory for {self.schema} doesn't exist yet. Creating and cloning.")
+            stream = os.popen(f'git clone {self.github_url}')
+            self.logger.info(f'{stream.read()}')
+            self.logger.info("Newest data cloned.")
+
 
     def connect_to_postgres(self):
         self.logger.info("Connecting to postgres..")

@@ -1,8 +1,14 @@
 ## Local path to data repositories. '~'s are acceptable.
 
 github_paths = {
-    'nytimes': '~/Documents/github/nytimes-covid-data',
-    'atlantic': '~/Documents/github/atlantic-covid-data'
+    'nytimes': {
+        'git_file_path': '~/Documents/github/nytimes-covid-data',
+        'git_url' : 'git@github.com:nytimes/covid-19-data.git'
+    },
+    'atlantic': {
+        'git_file_path': '~/Documents/github/atlantic-covid-data',
+        'git_url' : None
+    }
 }
 
 ## path to DATA repo -- this is used to fuel Observable Maps
