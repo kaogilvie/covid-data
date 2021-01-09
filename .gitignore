@@ -6,3 +6,5 @@ postgres/*
 
 !static/*
 !d3/output/*
+
+covid-data/
