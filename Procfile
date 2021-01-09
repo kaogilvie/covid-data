@@ -1,1 +1,1 @@
-refresh: python update/all.py
+refresh: python update/all.py -e prod

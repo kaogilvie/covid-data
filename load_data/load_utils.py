@@ -22,7 +22,7 @@ class DataLoader(object):
         else:
             from config import heroku as env_config
 
-        self.github_paths = env_config.github_path
+        self.github_paths = env_config.github_paths
         self.data_repo_path = env_config.data_repo_path
 
         self.schema = schema
@@ -81,7 +81,7 @@ class DataLoader(object):
 
         if exists is False:
             self.logger.info("Connecting to Postgres via SQLAlchemy for pandas.")
-            self.pd_cxn = connect.pandas_dbconn(self.pg_creds)
+            self.pd_cxn = connect.pandas_dbconn(self.pg_creds, self.env)
             self.pd_dataframe = pd.read_csv(full_filename)
             sliced_dataframe = self.pd_dataframe.truncate(after=0)
             self.logger.info(f"Creating table using this df template: {sliced_dataframe}")
