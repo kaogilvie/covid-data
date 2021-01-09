@@ -13,7 +13,7 @@ def addapt_numpy_int64(numpy_int64):
     return(AsIs(numpy_int64))
 
 class ATLDataLoader(load_utils.DataLoader):
-    def __init__(self, local=True):
+    def __init__(self, env='local'):
         super().__init__(schema='atlantic')
 
     def download_daily_data(self, filename):

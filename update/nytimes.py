@@ -39,15 +39,13 @@ file_exclusions = [
     '.DS_Store'
 ]
 
-LOCAL = True
-
-def run_update():
+def run_update(env):
     logs.configure_logging('NYTUpdater')
     logger = logging.getLogger()
 
-    logger.info("Refreshing all NYTimes data.")
+    logger.info(f"Refreshing all NYTimes data for env {env}.")
 
-    nyt = times.NTYDataLoader(LOCAL)
+    nyt = times.NTYDataLoader(env)
     nyt.pull_new_github_data()
     for table, filename in dynamic_tables.items():
         logger.info(f"Working on {table}")

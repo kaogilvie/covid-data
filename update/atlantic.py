@@ -10,13 +10,13 @@ dynamic_tables = {
 
 LOCAL = True
 
-def run_update():
+def run_update(env):
     logs.configure_logging('ATLTUpdater')
     logger = logging.getLogger()
 
-    logger.info("Refreshing all Atlantic data.")
+    logger.info(f"Refreshing all Atlantic data for env {env}.")
 
-    atl = atlantic.ATLDataLoader(LOCAL)
+    atl = atlantic.ATLDataLoader(env=env)
     for table, filename in dynamic_tables.items():
         logger.info(f"Working on {table}")
         atl.download_daily_data(filename)

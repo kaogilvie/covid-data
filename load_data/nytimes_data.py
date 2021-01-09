@@ -9,8 +9,8 @@ def addapt_numpy_int64(numpy_int64):
     return(AsIs(numpy_int64))
 
 class NTYDataLoader(load_utils.DataLoader):
-    def __init__(self, local=True):
-        super().__init__(schema='nytimes')
+    def __init__(self, env='local'):
+        super().__init__(schema='nytimes', env=env)
 
 
 if __name__ == "__main__":

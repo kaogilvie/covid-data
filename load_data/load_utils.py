@@ -13,7 +13,7 @@ from covid_utils import connect
 from covid_utils import credentials
 
 class DataLoader(object):
-    def __init__(self, schema='nytimes', local=True):
+    def __init__(self, schema='nytimes', env='local'):
         logs.configure_logging(f'{schema.capitalize()}DataLoader')
         self.logger = logging.getLogger()
 
@@ -22,7 +22,7 @@ class DataLoader(object):
         self.github_path = local_config.github_paths[schema]
         self.file_root = os.path.expanduser(self.github_path)
 
-        self.connect_to_postgres(local)
+        self.connect_to_postgres(env)
 
     def pull_new_github_data(self):
         self.logger.info("Pulling newest data.")
@@ -31,9 +31,9 @@ class DataLoader(object):
         self.logger.info(f'{stream.read()}')
         self.logger.info("Newest data pulled.")
 
-    def connect_to_postgres(self, local=True):
+    def connect_to_postgres(self, env='local'):
         self.logger.info("Connecting to postgres..")
-        self.pg_creds = credentials.get_postgres_creds(local)
+        self.pg_creds = credentials.get_postgres_creds(env)
         self.cxn = connect.dbconn(self.pg_creds)
         self.cursor = self.cxn.cursor(cursor_factory=DictCursor)
         self.logger.info("Connected to postgres at {}.".format(self.pg_creds['host']))
