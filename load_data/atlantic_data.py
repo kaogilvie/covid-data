@@ -6,6 +6,7 @@ import csv
 from psycopg2.extensions import register_adapter, AsIs
 import numpy
 import json
+import os
 
 from collections import OrderedDict
 
@@ -24,8 +25,8 @@ class ATLDataLoader(load_utils.DataLoader):
                     'negativetestsviral', 'positivetestsviral', 'positivecasesviral', 'totaltestsviral',
                     'totaltestresults', 'positiveincrease', 'deathincrease', 'hospitalizedincrease', 'totaltestresultsincrease']
 
-        if not os.path.isdir(self.fileroot):
-            os.path.mkdir(self.fileroot)
+        if not os.path.isdir(self.file_root):
+            os.path.mkdir(self.file_root)
         with open(f'{self.file_root}/{filename}', 'w+') as header_file:
             header_dump = csv.writer(header_file)
             header_dump.writerow(header)

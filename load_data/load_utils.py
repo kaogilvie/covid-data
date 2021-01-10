@@ -32,21 +32,22 @@ class DataLoader(object):
         self.connect_to_postgres()
 
     def pull_new_github_data(self):
-        if os.path.isdir(self.github_path):
+        if os.path.isdir(os.path.expanduser(self.github_path)):
             self.logger.info("Pulling newest data.")
-            os.chdir(self.github_path)
+            os.chdir(os.path.expanduser(self.github_path))
             stream = os.popen('git pull')
             self.logger.info(f'{stream.read()}')
             self.logger.info("Newest data pulled.")
         else:
             self.logger.info(f"Directory for {self.schema} doesn't exist yet. Creating and cloning.")
+            os.chdir(self.file_root)
             stream = os.popen(f'git clone {self.github_url}')
             self.logger.info(f'{stream.read()}')
             self.logger.info("Newest data cloned.")
 
 
     def connect_to_postgres(self):
-        self.logger.info("Connecting to postgres..")
+        self.logger.info(f"Connecting to postgres in env {self.env}..")
         self.pg_creds = credentials.get_postgres_creds(self.env)
         self.cxn = connect.dbconn(self.pg_creds, self.env)
         self.cursor = self.cxn.cursor(cursor_factory=DictCursor)
@@ -80,7 +81,7 @@ class DataLoader(object):
 
     def load_data(self, table, data_filename, exists=True, date_column='date'):
         self.logger.info("Accessing full reload data..")
-        full_filename = f'{self.git_file_path}/{data_filename}'
+        full_filename = os.path.expanduser(f'{self.github_path}/{data_filename}')
         data_to_load = open(full_filename, 'r')
         data_header = next(data_to_load).strip().split(',')
         print(data_header)
@@ -109,12 +110,12 @@ class DataLoader(object):
                 self.logger.info(f"Initializing incremental load of {table} new rows beginning with the day after {self.recent_date}.")
 
                 self.logger.info("Slicing data...")
-                full_data_df = pd.read_csv(f'{self.file_root}/{data_filename}')
+                full_data_df = pd.read_csv(full_filename)
                 insert_df = full_data_df[full_data_df[f'{date_column}'] > str(self.recent_date)]
                 self.logger.info(f"Going to append a df of {len(insert_df)} rows using pandas.")
 
                 self.logger.info("Connecting to Postgres via SQLAlchemy for pandas.")
-                self.pd_cxn = connect.pandas_dbconn(self.pg_creds)
+                self.pd_cxn = connect.pandas_dbconn(self.pg_creds, self.env)
 
                 self.logger.info("Appending rows...")
                 insert_df.to_sql(f'{table}', self.pd_cxn, schema=f'{self.schema}', if_exists='append', index=False, method='multi')

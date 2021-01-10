@@ -28,10 +28,10 @@ flat_files = [
 ]
 
 file_path_list = [
-    '/Users/kogilvie/Documents/github/kaogilvie.github.io/totals_by_state.csv',
-    '/Users/kogilvie/Documents/github/kaogilvie.github.io/daily_by_state.csv',
-    '/Users/kogilvie/Documents/github/kaogilvie.github.io/daily_countrywide.csv',
-    '/Users/kogilvie/Documents/github/kaogilvie.github.io/totals_countrywide.csv'
+    'totals_by_state.csv',
+    'daily_by_state.csv',
+    'daily_countrywide.csv',
+    'totals_countrywide.csv'
 ]
 
 file_exclusions = [
@@ -67,11 +67,11 @@ def run_update(env):
         flatFiler.write_csv()
 
     logger.info("Adding files to index.")
-    if not os.path.isdir(nyt.data_repo_path):
+    if not os.path.isdir(os.path.expanduser(nyt.data_repo_path)):
         stream = os.popen(f'git clone {flatFiler.data_git_url}')
-        self.logger.info(f'{stream.read()}')
-        self.logger.info("Data git repo cloned.")
-    github_io_repo = Repo(self.data_repo_path)
+        nyt.logger.info(f'{stream.read()}')
+        nyt.logger.info("Data git repo cloned.")
+    github_io_repo = Repo(nyt.data_repo_path)
     for file in file_path_list:
         github_io_repo.index.add(file)
 

@@ -26,6 +26,7 @@ class StaticCSVLoader(object):
             from config import heroku as env_config
 
         self.data_repo_path = env_config.data_repo_path
+        self.path_to_this_repo = env_config.path_to_this_repo
 
         self.schema = 'aux'
         self.file_root = os.path.expanduser(self.path_to_this_repo)
@@ -48,7 +49,7 @@ class StaticCSVLoader(object):
         self.logger.info("Loading table.")
 
         self.logger.info("Connecting to Postgres via SQLAlchemy for pandas.")
-        self.pd_cxn = connect.pandas_dbconn(self.pg_creds)
+        self.pd_cxn = connect.pandas_dbconn(self.pg_creds, self.env)
         self.pd_dataframe = pd.read_csv(self.full_filename)
 
         self.logger.info("Creating table...")
@@ -63,13 +64,14 @@ if __name__ == "__main__":
 
     args = argparse.ArgumentParser()
     args.add_argument('-l', '--load_file', help="relative filename of file to load")
+    args.add_argument('-e', '--env', help='prod or local')
     argz = args.parse_args()
 
     load_file = argz.load_file
     if load_file is None:
         load_file = 'static/fips_to_latlng.csv'
 
-    reader = StaticCSVLoader(local=False)
+    reader = StaticCSVLoader(env=argz.env)
 
     reader.configure_csv(load_file)
     reader.load_data()
