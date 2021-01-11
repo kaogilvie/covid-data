@@ -25,12 +25,13 @@ class ATLDataLoader(load_utils.DataLoader):
                     'negativetestsviral', 'positivetestsviral', 'positivecasesviral', 'totaltestsviral',
                     'totaltestresults', 'positiveincrease', 'deathincrease', 'hospitalizedincrease', 'totaltestresultsincrease']
 
-        if not os.path.isdir(self.file_root):
-            os.path.mkdir(self.file_root)
-        with open(f'{self.file_root}/{filename}', 'w+') as header_file:
+        self.atlantic_data_path = f"{self.file_root}/atlantic-covid-data"
+        if not os.path.isdir(self.atlantic_data_path):
+            os.path.mkdir(self.atlantic_data_path)
+        with open(f'{self.atlantic_data_path}/{filename}', 'w+') as header_file:
             header_dump = csv.writer(header_file)
             header_dump.writerow(header)
-        payload_dump = csv.writer(open(f'{self.file_root}/{filename}', 'a'))
+        payload_dump = csv.writer(open(f'{self.atlantic_data_path}/{filename}', 'a'))
 
         for write_dict in json.loads(api_payload.content):
                 for key, value in write_dict.items():
