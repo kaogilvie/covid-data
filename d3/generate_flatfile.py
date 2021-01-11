@@ -20,7 +20,9 @@ class FlatFileGenerator(object):
         else:
             from config import heroku as env_config
 
+        self.file_root = env_config.path_to_this_repo
         self.data_repo_path = env_config.data_repo_path
+
         self.data_file_root = os.path.expanduser(self.data_repo_path)
         self.data_git_url = 'https://github.com/kaogilvie/kaogilvie.github.io.git'
 
@@ -48,6 +50,11 @@ class FlatFileGenerator(object):
         self.full_output_path = f"{self.data_file_root}/{self.sql_key}.csv"
 
         self.logger.info(f"Writing to {self.full_output_path}")
+        if not os.path.isdir(os.path.expanduser(self.data_file_root)):
+            os.chdir(os.path.expanduser(self.file_root))
+            stream = os.popen(f'git clone {self.data_git_url}')
+            self.logger.info(f'{stream.read()}')
+            self.logger.info("Data git repo cloned.")
         self.df.to_csv(self.full_output_path, index=False)
 
         self.logger.info("Done writing file.")
