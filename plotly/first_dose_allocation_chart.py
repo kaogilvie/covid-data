@@ -1,6 +1,8 @@
+import os
+import logging
+
 from chart_studio import plotly as py
 import plotly.graph_objects as go
-import os
 import requests
 import pandas as pd
 
@@ -14,7 +16,7 @@ py.sign_in('tkogilvie', os.environ['PLOTLY_TOKEN'])
 logger.info("Signed in.")
 
 target_jurisdiction = 'District of Columbia'
-logger.info(f"Gathering vaccine data for {target_jurisdiction}".)
+logger.info(f"Gathering vaccine data for {target_jurisdiction}.")
 
 cdc_headers = {'X-App-Token': os.environ['CDC_VAX_APP_TOKEN']}
 
@@ -35,6 +37,13 @@ jandj_url = 'https://data.cdc.gov/resource/w9zu-fywh.json'
 jandj_response = requests.get(jandj_url, headers=cdc_headers)
 jandj = pd.read_json(jandj_response.text, orient='records')
 jandj = jandj[jandj['jurisdiction']==target_jurisdiction]
+
+jandj['week_of_allocations'].max()
+
+logger.info("--Most recent dates of data--")
+logger.info(f"Moderna: {moderna['week_of_allocations'].max()}")
+logger.info(f"Pfizer: {pfizer['week_of_allocations'].max()}")
+logger.info(f"J&J: {jandj['week_of_allocations'].max()}")
 
 logger.info("Creating the chart...")
 vaccine_layout = {
