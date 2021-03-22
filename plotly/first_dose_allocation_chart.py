@@ -4,29 +4,39 @@ import os
 import requests
 import pandas as pd
 
+from covid_utils import logs
+
+logs.configure_logging('VaccinationTrackerLogger')
+logger = logging.getLogger()
+
+logger.info("Signing into plotly.")
 py.sign_in('tkogilvie', os.environ['PLOTLY_TOKEN'])
+logger.info("Signed in.")
+
+target_jurisdiction = 'District of Columbia'
+logger.info(f"Gathering vaccine data for {target_jurisdiction}".)
 
 cdc_headers = {'X-App-Token': os.environ['CDC_VAX_APP_TOKEN']}
-target_jurisdiction = 'District of Columbia'
 
-## get moderna data
+logger.info("Getting Moderna data...")
 moderna_url = 'https://data.cdc.gov/resource/b7pe-5nws.json'
 moderna_response = requests.get(moderna_url, headers=cdc_headers)
 moderna = pd.read_json(moderna_response.text, orient='records')
 moderna = moderna[moderna['jurisdiction']==target_jurisdiction]
 
-## get pfizer data
+logger.info("Getting Pfizer data...")
 pfizer_url = 'https://data.cdc.gov/resource/saz5-9hgg.json'
 pfizer_response = requests.get(pfizer_url, headers=cdc_headers)
 pfizer = pd.read_json(pfizer_response.text, orient='records')
 pfizer = pfizer[pfizer['jurisdiction']==target_jurisdiction]
 
-## get J&J data
+logger.info("Getting J&J data...")
 jandj_url = 'https://data.cdc.gov/resource/w9zu-fywh.json'
 jandj_response = requests.get(jandj_url, headers=cdc_headers)
 jandj = pd.read_json(jandj_response.text, orient='records')
 jandj = jandj[jandj['jurisdiction']==target_jurisdiction]
 
+logger.info("Creating the chart...")
 vaccine_layout = {
   "title": {"text": "First Dose Vaccination Allocation in DC"},
   "xaxis": {
@@ -81,4 +91,7 @@ fig.add_trace(go.Bar({
     )
 
 fig.update_layout(vaccine_layout)
+
+logger.info("Publishing chart.")
 plot_url = py.plot(fig, filename='First-Dose_Vaccine_Allocation_DC', fileopt='extend', auto_open=False)
+logger.info(f"Chart published at {plot_url}.")
