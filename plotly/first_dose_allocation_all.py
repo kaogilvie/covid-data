@@ -143,5 +143,5 @@ vaccine_layout = {
 fig.update_layout(vaccine_layout)
 
 logger.info("Publishing chart.")
-plot_url = py.plot(fig, filename='First-Dose_Vaccine_Allocation', fileopt='extend', auto_open=False)
+plot_url = py.plot(fig, filename='First-Dose_Vaccine_Allocation', auto_open=False)
 logger.info(f"Chart published at {plot_url}.")
